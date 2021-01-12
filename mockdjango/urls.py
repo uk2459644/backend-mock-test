@@ -54,6 +54,14 @@ urlpatterns = [
     path('previous-year-ssc-je-ce/',ssc_je_ce_testlist_previous_year),
     path('previous-year-rrb-ntpc/',rrb_ntpc_testlist_previous_year),
     path('previous-year-rrb-group-d/',rrb_groupd_testlist_previous_year),
+
+     # preview list of previous year test names by categories
+    path('previous-year-ssc-cgl/preview/',preview_ssc_cgl_testlist_previous_year),
+    path('previous-year-ssc-chsl/preview/',preview_ssc_chsl_testlist_previous_year),
+    path('previous-year-ssc-je-ee/preview/',preview_ssc_je_ee_testlist_previous_year),
+    path('previous-year-ssc-je-ce/preview/',preview_ssc_je_ce_testlist_previous_year),
+    path('previous-year-rrb-ntpc/preview/',preview_rrb_ntpc_testlist_previous_year),
+    path('previous-year-rrb-group-d/preview/',preview_rrb_ntpc_testlist_previous_year),
      
     # list of questions by test names
     path('rrb-ntpc/<int:cid>/', rrb_ntpc_questions_by_test_name),

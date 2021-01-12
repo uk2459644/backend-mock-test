@@ -52,6 +52,14 @@ def ssc_cgl_testlist_previous_year(request):
         serializer = PreviousYearSSC_CGL_TestNameSerializer(testlist, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+def preview_ssc_cgl_testlist_previous_year(request):
+
+    if request.method == 'GET':
+        testlist = PreviousYearSSCCGLTestName.objects.filter(
+            is_previous_year_question=True,show_test=False).order_by('test_number')
+        serializer = PreviousYearSSC_CGL_TestNameSerializer(testlist, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
 
 def ssc_cgl_questions_by_test_name(request, cid):
     if request.method == 'GET':
@@ -95,6 +103,13 @@ def ssc_chsl_testlist_previous_year(request):
         serializer =PreviousYearSSC_CHSL_TestNameSerializer(testlist, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+def preview_ssc_chsl_testlist_previous_year(request):
+
+    if request.method == 'GET':
+        testlist = PreviousYearSSCCHSLTestName.objects.filter(
+            is_previous_year_question=True,show_test=False).order_by('test_number')
+        serializer =PreviousYearSSC_CHSL_TestNameSerializer(testlist, many=True)
+        return JsonResponse(serializer.data, safe=False)
 
 def ssc_chsl_questions_by_test_name(request, cid):
     if request.method == 'GET':
@@ -130,6 +145,14 @@ def preview_ssc_je_ee_testlist(request):
         return JsonResponse(serializer.data, safe=False)
 
 def ssc_je_ee_testlist_previous_year(request):
+
+    if request.method == 'GET':
+        testlist = PreviousYearSSCJEEETestName.objects.filter(
+            is_previous_year_question=True,show_test=True).order_by('test_number')
+        serializer = PreviousYearSSC_JE_EE_TestNameSerializer(testlist, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+def preview_ssc_je_ee_testlist_previous_year(request):
 
     if request.method == 'GET':
         testlist = PreviousYearSSCJEEETestName.objects.filter(
@@ -179,6 +202,14 @@ def ssc_je_ce_testlist_previous_year(request):
         serializer = PreviousYearSSC_JE_CE_TestNameSerializer(testlist, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+def preview_ssc_je_ce_testlist_previous_year(request):
+
+    if request.method == 'GET':
+        testlist = PreviousYearSscJeCeTestName.objects.filter(
+            is_previous_year_question=True,show_test=False).order_by('test_number')
+        serializer = PreviousYearSSC_JE_CE_TestNameSerializer(testlist, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
 
 def ssc_je_ce_questions_by_test_name(request, cid):
     if request.method == 'GET':
@@ -222,6 +253,14 @@ def rrb_ntpc_testlist_previous_year(request):
 
         return JsonResponse(serializer.data, safe=False)
 
+def preview_rrb_ntpc_testlist_previous_year(request):
+
+    if request.method == 'GET':
+        testlist = PreviousYearRRBNtpcTestName.objects.filter(
+            is_previous_year_question=True,show_test=False).order_by('test_number')
+        serializer = PreviousYearRRB_NTPC_TestNameSerializer(testlist, many=True)
+
+        return JsonResponse(serializer.data, safe=False)
 
 def rrb_ntpc_questions_by_test_name(request, cid):
 
@@ -266,6 +305,13 @@ def rrb_groupd_testlist_previous_year(request):
         serializer = PreviousYearRRB_GROUPD_TestNameSerializer(testlist, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+def preview_rrb_groupd_testlist_previous_year(request):
+
+    if request.method == 'GET':
+        testlist = PreviousYearRRBGroupDTestName.objects.filter(
+            is_previous_year_question=True,show_test=False).order_by('test_number')
+        serializer = PreviousYearRRB_GROUPD_TestNameSerializer(testlist, many=True)
+        return JsonResponse(serializer.data, safe=False)
 
 def rrb_groupd_questions_by_test_name(request, cid):
     if request.method == 'GET':
