@@ -2,10 +2,10 @@ from rest_framework import serializers
 from .models import *
 
 
-# class LanguageSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model=Language
-#         fields=['lang_no','language_name']
+class LanguageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=LanguageSelector
+        fields=['id','lang_no','language_name']
 
 class YearSerializer(serializers.ModelSerializer):
     class Meta:
@@ -73,7 +73,7 @@ class RRB_NTPC_TestNameSerializer(serializers.ModelSerializer):
         fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
-                  #'language',
+                  'language',
                    'category', 'keyword']
 
 
@@ -83,7 +83,7 @@ class RRB_GROUPD_TestNameSerializer(serializers.ModelSerializer):
         fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
-                  #'language',
+                  'language',
                    'category', 'keyword']
 
 # Previous Year RRB Test Names serializers here
@@ -95,7 +95,7 @@ class PreviousYearRRB_NTPC_TestNameSerializer(serializers.ModelSerializer):
         fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
-                  #'language',
+                  'language',
                    'category', 'keyword']
 
 
@@ -105,7 +105,7 @@ class PreviousYearRRB_GROUPD_TestNameSerializer(serializers.ModelSerializer):
         fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
-                  #'language',
+                  'language',
                    'category', 'keyword']
 
 
@@ -117,7 +117,7 @@ class SSC_CGL_TestNameSerializer(serializers.ModelSerializer):
         fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
-                  #'language',
+                  'language',
                    'category', 'keyword']
 
 
@@ -127,7 +127,7 @@ class SSC_CHSL_TestNameSerializer(serializers.ModelSerializer):
         fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
-                  #'language',
+                  'language',
                    'category', 'keyword']
 
 
@@ -137,7 +137,7 @@ class SSC_JE_EE_TestNameSerializer(serializers.ModelSerializer):
         fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
-                  #'language',
+                  'language',
                    'category', 'keyword']
 
 
@@ -147,7 +147,7 @@ class SSC_JE_CE_TestNameSerializer(serializers.ModelSerializer):
         fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
-                  #'language',
+                  'language',
                    'category', 'keyword']
 
 # Previous Year SSC Test Names here
@@ -159,7 +159,7 @@ class PreviousYearSSC_CGL_TestNameSerializer(serializers.ModelSerializer):
         fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
-                  #'language',
+                  'language',
                    'category', 'keyword']
 
 
@@ -169,7 +169,7 @@ class PreviousYearSSC_CHSL_TestNameSerializer(serializers.ModelSerializer):
         fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
-                  #'language',
+                  'language',
                    'category', 'keyword']
 
 
@@ -179,7 +179,7 @@ class PreviousYearSSC_JE_EE_TestNameSerializer(serializers.ModelSerializer):
         fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
-                  #'language',
+                  'language',
                    'category', 'keyword']
 
 
@@ -189,7 +189,7 @@ class PreviousYearSSC_JE_CE_TestNameSerializer(serializers.ModelSerializer):
         fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
-                  #'language',
+                  'language',
                    'category', 'keyword']
 
 

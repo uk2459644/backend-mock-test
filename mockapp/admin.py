@@ -2,9 +2,9 @@ from django.contrib import admin
 from .models import *
 
 # Register your models here.
-# @admin.register(Language)
-# class LanguageAdmin(admin.ModelAdmin):
-#     list_display=['language_name','lang_no']
+@admin.register(LanguageSelector)
+class LanguageAdmin(admin.ModelAdmin):
+    list_display=['lang_name','lang_no']
 
 @admin.register(PrivacyPolicy)
 class PrivacyPolicyAdmin(admin.ModelAdmin):
@@ -13,6 +13,11 @@ class PrivacyPolicyAdmin(admin.ModelAdmin):
 
 @admin.register(FAQ)
 class FaqAdmin(admin.ModelAdmin):
+    list_display=['faq_no','faq_question']
+    list_filter=['faq_no','show']
+
+@admin.register(FAQSSCChsl)
+class FaqSSCAdmin(admin.ModelAdmin):
     list_display=['faq_no','faq_question']
     list_filter=['faq_no','show']
 
@@ -70,7 +75,7 @@ class RRB_NTPC_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test', 'month', 'year',
-                  #'language',
+                  'language',
                    'is_previous_year_question', 'category']
 
 
@@ -79,7 +84,7 @@ class RRB_GROUPD_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test'
-                   # ,'language'
+                    ,'language'
                    , 'month', 'year',
                    'is_previous_year_question', 'category']
 
@@ -91,7 +96,7 @@ class PreviousYearRRB_GROUPD_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                  #'language', 
+                  'language', 
                   'month', 'year',
                    'is_previous_year_question', 'category']
 
@@ -114,7 +119,7 @@ class Ssc_Cgl_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                    #'language',
+                    'language',
                      'month', 'year',
                    'is_previous_year_question', 'category']
 
@@ -124,7 +129,7 @@ class Ssc_Chsl_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                    #'language',
+                    'language',
                      'month', 'year',
                    'is_previous_year_question', 'category']
 
@@ -134,7 +139,7 @@ class Ssc_Je_Ee_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                    #'language',
+                    'language',
                      'month', 'year',
                    'is_previous_year_question', 'category']
 
@@ -144,7 +149,7 @@ class Ssc_Je_Ce_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                    #'language',
+                    'language',
                     'month', 'year',
                    'is_previous_year_question', 'category']
 
@@ -156,7 +161,7 @@ class PreviousYearSsc_Je_Ce_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                     #'language',
+                     'language',
                      'month', 'year',
                    'is_previous_year_question', 'category']
 
@@ -166,7 +171,7 @@ class PreviousYearSsc_Je_Ee_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                   #'language',
+                   'language',
                     'month', 'year',
                    'is_previous_year_question', 'category']
 
@@ -176,7 +181,7 @@ class PreviousYearSsc_Chsl_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                    #'language',
+                    'language',
                      'month', 'year',
                    'is_previous_year_question', 'category']
 
@@ -186,7 +191,7 @@ class PreviousYearSsc_Cgl_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                    #'language',
+                    'language',
                     'month', 'year',
                    'is_previous_year_question', 'category']
 

@@ -2,16 +2,29 @@ from django.db import models
 
 # Create your models here.
 
+# testlist by model
+class FAQSSCChsl(models.Model):
+    faq_no=models.IntegerField()
+    faq_question=models.CharField(max_length=150,help_text='FAQ Question')
+    faq_answer=models.TextField(help_text='Answer here .')
+    show=models.BooleanField(default=False)
+
+    class Meta:
+        ordering=['faq_no','faq_question','faq_answer','show']
+
+    def __str__(self):
+        return self.faq_question
+
 # basic models here
-# class Language(models.Model):
-#     lang_no=models.IntegerField()
-#     language_name=models.CharField(max_length=120)
+class LanguageSelector(models.Model):
+    lang_no=models.IntegerField(null=True,blank=True)
+    lang_name=models.CharField(max_length=120,null=True,blank=True)
 
-#     class Meta:
-#         ordering=['language_name','lang_no']
+    class Meta:
+        ordering=['lang_name','lang_no']
 
-#     def __str__(self):
-#         return self.language_name    
+    def __str__(self):
+        return self.lang_name    
 
 class FAQ(models.Model):
     faq_no=models.IntegerField()
@@ -132,6 +145,7 @@ class Subject(models.Model):
 
 
 class TestName(models.Model):
+    lang=models.ForeignKey(LanguageSelector,on_delete=models.CASCADE,null=True,blank=True)
     test_number = models.IntegerField(null=True,blank=True)
     test_name = models.CharField(max_length=120)
     keyword = models.CharField(max_length=120, null=True,blank=True)
@@ -155,7 +169,7 @@ class TestName(models.Model):
 
 
 class RRBGroupDTestName(models.Model):
-    #language=models.ForeignKey(Language,on_delete=models.CASCADE,default='')
+    language=models.ForeignKey(LanguageSelector,on_delete=models.CASCADE,null=True,blank=True,default='')
     test_number = models.IntegerField(null=True,blank=True)
     test_name = models.CharField(max_length=120)
     keyword = models.CharField(max_length=120, null=True,blank=True)
@@ -172,7 +186,7 @@ class RRBGroupDTestName(models.Model):
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
-                    #'language',
+                    'language',
                     'test_name', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
@@ -180,7 +194,7 @@ class RRBGroupDTestName(models.Model):
 
 
 class RRBNtpcTestName(models.Model):
-   # language=models.ForeignKey(Language,on_delete=models.CASCADE,default='')
+    language=models.ForeignKey(LanguageSelector,on_delete=models.CASCADE,null=True,blank=True,default='')
     test_number = models.IntegerField(null=True,blank=True)
     test_name = models.CharField(max_length=120)
     keyword = models.CharField(max_length=120, null=True,blank=True)
@@ -197,7 +211,7 @@ class RRBNtpcTestName(models.Model):
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
-                    #'language',
+                    'language',
                     'test_name', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
@@ -207,7 +221,7 @@ class RRBNtpcTestName(models.Model):
 
 
 class PreviousYearRRBGroupDTestName(models.Model):
-    #language=models.ForeignKey(Language,on_delete=models.CASCADE,default='')
+    language=models.ForeignKey(LanguageSelector,on_delete=models.CASCADE,null=True,blank=True,default='')
     test_number = models.IntegerField(null=True,blank=True)
     test_name = models.CharField(max_length=120)
     keyword = models.CharField(max_length=120, null=True,blank=True)
@@ -224,7 +238,7 @@ class PreviousYearRRBGroupDTestName(models.Model):
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
-                    #'language',
+                    'language',
                     'test_name', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
@@ -232,7 +246,7 @@ class PreviousYearRRBGroupDTestName(models.Model):
 
 
 class PreviousYearRRBNtpcTestName(models.Model):
-    #language=models.ForeignKey(Language,on_delete=models.CASCADE,default='')
+    language=models.ForeignKey(LanguageSelector,on_delete=models.CASCADE,null=True,blank=True,default='')
     test_number = models.IntegerField(null=True,blank=True)
     test_name = models.CharField(max_length=120)
     keyword = models.CharField(max_length=120, null=True,blank=True)
@@ -249,7 +263,7 @@ class PreviousYearRRBNtpcTestName(models.Model):
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
-                    #'language',
+                    'language',
                     'test_name', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
@@ -260,7 +274,7 @@ class PreviousYearRRBNtpcTestName(models.Model):
 
 
 class SscJeCeTestName(models.Model):
-    #language=models.ForeignKey(Language,on_delete=models.CASCADE,default='')
+    language=models.ForeignKey(LanguageSelector,on_delete=models.CASCADE,null=True,blank=True,default='')
     test_number = models.IntegerField(null=True,blank=True)
     test_name = models.CharField(max_length=120)
     keyword = models.CharField(max_length=120, null=True,blank=True)
@@ -277,7 +291,7 @@ class SscJeCeTestName(models.Model):
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
-                    #'language',
+                    'language',
                     'test_name', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
@@ -285,7 +299,7 @@ class SscJeCeTestName(models.Model):
 
 
 class SSCJEEETestName(models.Model):
-   # language=models.ForeignKey(Language,on_delete=models.CASCADE,default='')
+    language=models.ForeignKey(LanguageSelector,on_delete=models.CASCADE,null=True,blank=True,default='')
     test_number = models.IntegerField(null=True,blank=True)
     test_name = models.CharField(max_length=120)
     keyword = models.CharField(max_length=120, null=True,blank=True)
@@ -302,7 +316,7 @@ class SSCJEEETestName(models.Model):
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
-                    #'language',
+                    'language',
                     'test_name', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
@@ -310,7 +324,7 @@ class SSCJEEETestName(models.Model):
 
 
 class SSCCHSLTestName(models.Model):
-   # language=models.ForeignKey(Language,on_delete=models.CASCADE,default='')
+    language=models.ForeignKey(LanguageSelector,on_delete=models.CASCADE,null=True,blank=True,default='')
     test_number = models.IntegerField(null=True,blank=True)
     test_name = models.CharField(max_length=120)
     keyword = models.CharField(max_length=120, null=True,blank=True)
@@ -327,7 +341,7 @@ class SSCCHSLTestName(models.Model):
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
-                    #'language',
+                    'language',
                     'test_name', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
@@ -335,7 +349,7 @@ class SSCCHSLTestName(models.Model):
 
 
 class SSCCGLTestName(models.Model):
-   # language=models.ForeignKey(Language,on_delete=models.CASCADE,default='')
+    language=models.ForeignKey(LanguageSelector,on_delete=models.CASCADE,null=True,blank=True,default='')
     test_number = models.IntegerField(null=True,blank=True)
     test_name = models.CharField(max_length=120)
     keyword = models.CharField(max_length=120, null=True,blank=True)
@@ -352,7 +366,7 @@ class SSCCGLTestName(models.Model):
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
-                    #'language',
+                    'language',
                     'test_name', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
@@ -362,7 +376,7 @@ class SSCCGLTestName(models.Model):
 
 
 class PreviousYearSscJeCeTestName(models.Model):
-   # language=models.ForeignKey(Language,on_delete=models.CASCADE,default='')
+    language=models.ForeignKey(LanguageSelector,on_delete=models.CASCADE,null=True,blank=True,default='')
     test_number = models.IntegerField(null=True,blank=True)
     test_name = models.CharField(max_length=120)
     keyword = models.CharField(max_length=120, null=True,blank=True)
@@ -379,7 +393,7 @@ class PreviousYearSscJeCeTestName(models.Model):
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
-                    #'language',
+                    'language',
                     'test_name', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
@@ -387,7 +401,7 @@ class PreviousYearSscJeCeTestName(models.Model):
 
 
 class PreviousYearSSCJEEETestName(models.Model):
-   # language=models.ForeignKey(Language,on_delete=models.CASCADE,default='')
+    language=models.ForeignKey(LanguageSelector,on_delete=models.CASCADE,null=True,blank=True,default='')
     test_number = models.IntegerField(null=True,blank=True)
     test_name = models.CharField(max_length=120)
     keyword = models.CharField(max_length=120, null=True,blank=True)
@@ -404,7 +418,7 @@ class PreviousYearSSCJEEETestName(models.Model):
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
-                    #'language',
+                    'language',
                     'test_name', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
@@ -412,7 +426,7 @@ class PreviousYearSSCJEEETestName(models.Model):
 
 
 class PreviousYearSSCCHSLTestName(models.Model):
-   # language=models.ForeignKey(Language,on_delete=models.CASCADE,default='')
+    language=models.ForeignKey(LanguageSelector,on_delete=models.CASCADE,null=True,blank=True,default='')
     test_number = models.IntegerField(null=True,blank=True)
     test_name = models.CharField(max_length=120)
     keyword = models.CharField(max_length=120, null=True,blank=True)
@@ -429,7 +443,7 @@ class PreviousYearSSCCHSLTestName(models.Model):
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
-                     #'language',
+                     'language',
                     'test_name', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
@@ -437,7 +451,7 @@ class PreviousYearSSCCHSLTestName(models.Model):
 
 
 class PreviousYearSSCCGLTestName(models.Model):
-   # language=models.ForeignKey(Language,on_delete=models.CASCADE,default='')
+    language=models.ForeignKey(LanguageSelector,on_delete=models.CASCADE,null=True,blank=True,default='')
     test_number = models.IntegerField(null=True,blank=True)
     test_name = models.CharField(max_length=120)
     keyword = models.CharField(max_length=120, null=True,blank=True)
@@ -454,7 +468,7 @@ class PreviousYearSSCCGLTestName(models.Model):
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
-                    #'language',
+                    'language',
                     'test_name', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
