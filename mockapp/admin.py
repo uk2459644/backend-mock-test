@@ -43,7 +43,7 @@ class MonthAdmin(admin.ModelAdmin):
 
 @admin.register(TestCategory)
 class TestCategoryAdmin(admin.ModelAdmin):
-    list_display = ['category']
+    list_display = ['category','keyword','preview_keyword']
 
 
 @admin.register(Subject)
