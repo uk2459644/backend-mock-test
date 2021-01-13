@@ -19,9 +19,10 @@ class FAQSSCChsl(models.Model):
 class LanguageSelector(models.Model):
     lang_no=models.IntegerField(null=True,blank=True)
     lang_name=models.CharField(max_length=120,null=True,blank=True)
+    show=models.BooleanField(default=True)
 
     class Meta:
-        ordering=['lang_name','lang_no']
+        ordering=['lang_name','lang_no','show']
 
     def __str__(self):
         return self.lang_name    

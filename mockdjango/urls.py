@@ -25,6 +25,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', show_question),
 
+    #get language list
+     path('lang/',get_language_list),
+
     # privacy policy list , terms and faq
     path('privacy-policy/',privacy_policy_list),
     path('terms-list/',terms_list),

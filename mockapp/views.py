@@ -5,6 +5,13 @@ from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
 
+# getting language list 
+def get_language_list(request):
+      if  request.method == 'GET':
+        lang_list=LanguageSelector.objects.filter(show=True).order_by('lang_no')
+        serializer=LanguageSerializer(lang_list,many=True)
+        return JsonResponse(serializer.data,safe=False)
+
 # getting privacy policy , faq and terms data
 def privacy_policy_list(request):
     if request.method == 'GET':

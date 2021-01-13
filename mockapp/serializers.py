@@ -5,7 +5,7 @@ from .models import *
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
         model=LanguageSelector
-        fields=['id','lang_no','language_name']
+        fields=['id','lang_no','lang_name','show']
 
 class YearSerializer(serializers.ModelSerializer):
     class Meta:
