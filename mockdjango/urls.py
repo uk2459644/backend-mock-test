@@ -28,6 +28,10 @@ urlpatterns = [
     #get language list
      path('lang/',get_language_list),
 
+    # get categories list
+     path('cat/',get_categories_list),
+     
+
     # privacy policy list , terms and faq
     path('privacy-policy/',privacy_policy_list),
     path('terms-list/',terms_list),
