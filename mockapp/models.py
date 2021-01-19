@@ -175,6 +175,35 @@ class TestName(models.Model):
 
     def __str__(self):
         return self.test_name
+
+# BIHAR POLICE Test name models here
+
+class BiharPoliceTestName(models.Model):
+    language=models.ForeignKey(LanguageSelector,on_delete=models.CASCADE,null=True,blank=True,default='')
+    test_number = models.IntegerField(null=True,blank=True)
+    test_name = models.CharField(max_length=120)
+    keyword = models.CharField(max_length=120, null=True,blank=True)
+    is_previous_year_question = models.BooleanField(default=False)
+    total_no_of_question = models.IntegerField(null=True,blank=True)
+    month = models.ForeignKey(Month, on_delete=models.CASCADE)
+    year = models.ForeignKey(Year, on_delete=models.CASCADE)
+    pub_date = models.DateField()
+    edit_date = models.DateField()
+    category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
+    show_test=models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ['test_number', 'year', 'month','show_test',
+                    'is_previous_year_question',
+                    'total_no_of_question',
+                    'language',
+                    'test_name', 'pub_date', 'edit_date', 'category']
+
+    def __str__(self):
+        return self.test_name
+
+
+
 # RRB Test name models here
 
 
@@ -514,6 +543,43 @@ class Question(models.Model):
 
     def __str__(self):
         return self.question
+
+#Bihar Police Questioin model here
+
+class QuestionBiharPolice(models.Model):
+    # pub_date = models.DateField()
+    # edit_date = models.DateField()
+    test_name = models.ForeignKey(SSCCGLTestName, on_delete=models.CASCADE)
+    category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    month = models.ForeignKey(Month, on_delete=models.CASCADE)
+    year = models.ForeignKey(Year, on_delete=models.CASCADE)
+    comprehension_show = models.BooleanField(default=False)
+    comprehension_doc = models.BooleanField(default=False)
+    comprehension = models.TextField(blank=True,null=True)
+    show = models.BooleanField(default=True)
+    question_doc = models.BooleanField(default=False)
+    question_number = models.IntegerField(null=True,blank=True)
+    question = models.TextField(help_text='Write question')
+    opt_doc = models.BooleanField(default=False)
+    opt_a = models.TextField(help_text='Option a')
+    opt_b = models.TextField(help_text='Option b')
+    opt_c = models.TextField(help_text='Option c')
+    opt_d = models.TextField(help_text='Option d')
+    correct_opt = models.CharField(max_length=1)
+    correct_mark=models.FloatField(default=0)
+    negative_mark=models.FloatField(default=0)
+
+    class Meta:
+        ordering = [ 'test_name', 'category',
+                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
+                    'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                    'correct_mark','negative_mark']
+
+    def __str__(self):
+        return self.question
+
+        
 
 # SSC Question models here
 

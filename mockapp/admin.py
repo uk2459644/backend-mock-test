@@ -57,6 +57,7 @@ class TestNameAdmin(admin.ModelAdmin):
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['month', 'year', 'is_previous_year_question', 'category']
 
+
 # storage info models registered here
 
 
@@ -65,6 +66,17 @@ class InformationAdmin(admin.ModelAdmin):
     list_display = ['info_title', 'month', 'year']
     search_fields = ['month', 'info_title', 'meassage']
     list_filter = ['year', 'month']
+
+# Bihar Police test name  models here
+@admin.register(BiharPoliceTestName)
+class Bihar_Police_TestNameAdmin(admin.ModelAdmin):
+    list_display = ['test_name', 'category']
+    search_fields = ['test_name', 'category', 'keyword']
+    list_filter = ['show_test', 'month', 'year',
+                  'language',
+                   'is_previous_year_question', 'category']
+
+
 
 
 # RRB Test name models registered here
@@ -194,6 +206,15 @@ class PreviousYearSsc_Cgl_TestNameAdmin(admin.ModelAdmin):
                     'language',
                     'month', 'year',
                    'is_previous_year_question', 'category']
+
+# Bihar Police questions models here
+@admin.register(QuestionBiharPolice)
+class Bihar_Police_QuestionAdmin(admin.ModelAdmin):
+    list_display = ['question_number','question', 'test_name',
+                    'category'  ]
+    search_fields = ['question', 'test_name', 'category']
+    list_filter = ['year','subject', 'month', 'test_name', 'category']
+             
 
 # SSC question models registered here
 

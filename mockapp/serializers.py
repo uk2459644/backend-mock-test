@@ -66,6 +66,16 @@ class TestNameSerializer(serializers.ModelSerializer):
         fields = ['id', 'month', 'year', 'test_name',
                    'category', 'keyword']
 
+# Bihar police test name serializer
+class Bihar_Police_TestNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BiharPoliceTestName
+        fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
+                  'is_previous_year_question',
+                  'total_no_of_question',
+                  'language',
+                   'category', 'keyword']
+
 # RRB Test name serializers here
 
 
@@ -193,6 +203,15 @@ class PreviousYearSSC_JE_CE_TestNameSerializer(serializers.ModelSerializer):
                   'total_no_of_question',
                   'language',
                    'category', 'keyword']
+
+#Bihar Police question serializer
+class Bihar_Police_QuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = QuestionBiharPolice
+        fields = ['id',  'test_name', 'category', 'subject', 'month',
+                  'comprehension_show', 'comprehension_doc', 'question_doc', 'opt_doc', 'comprehension',
+                  'year', 'show', 'question', 'opt_a', 'opt_b', 'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                  'correct_mark','negative_mark']
 
 
 # RRB Question serializers

@@ -45,6 +45,7 @@ urlpatterns = [
     path('ssc-je-ce/', ssc_je_ce_testlist),
     path('rrb-ntpc/', rrb_ntpc_testlist),
     path('rrb-group-d/', rrb_groupd_testlist),
+    path('bihar-police/', bihar_police_testlist),
 
      # preview list of test names by categories
     path('ssc-cgl-testlist/preview/', preview_ssc_cgl_testlist),
@@ -53,6 +54,7 @@ urlpatterns = [
     path('ssc-je-ce/preview/', preview_ssc_je_ee_testlist),
     path('rrb-ntpc/preview/', preview_rrb_ntpc_testlist),
     path('rrb-group-d/preview/', preview_rrb_groupd_testlist),
+     path('bihar-police/preview/', preview_bihar_police_testlist),
 
 
     #list of previous year test names by categories
@@ -78,6 +80,7 @@ urlpatterns = [
     path('ssc-je-ee/<int:cid>/', ssc_je_ee_questions_by_test_name),
     path('ssc-chsl/<int:cid>/', ssc_chsl_questions_by_test_name),
     path('ssc-cgl/<int:cid>/', ssc_cgl_questions_by_test_name),
+    path('bihar-police/<int:cid>/', bihar_police_questions_by_test_name),
 
     # previous year list of questions by test names
     path('previous-year-rrb-ntpc/<int:cid>/',previous_year_rrb_ntpc_questions_by_test_name),
