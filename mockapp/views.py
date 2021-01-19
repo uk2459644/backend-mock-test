@@ -35,10 +35,15 @@ def terms_list(request):
 # getting list of categories
 def get_categories_list(request):
     if request.method == 'GET':
-        catlist=TestCategory.objects.all()
+        catlist=TestCategory.objects.filter(show=True)
         serializer=TestCategorySerializer(catlist,many=True)
         return JsonResponse(serializer.data,safe=False)
 
+def preview_get_categories_list(request):
+    if request.method == 'GET':
+        catlist=TestCategory.objects.filter(preview_show=True)
+        serializer=TestCategorySerializer(catlist,many=True)
+        return JsonResponse(serializer.data,safe=False)
 
 # getting ssc cgl test name and questions list ordered by test number
 

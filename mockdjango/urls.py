@@ -30,6 +30,7 @@ urlpatterns = [
 
     # get categories list
      path('cat/',get_categories_list),
+     path('preview/cat/',preview_get_categories_list),
      
 
     # privacy policy list , terms and faq

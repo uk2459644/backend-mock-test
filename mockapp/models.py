@@ -126,10 +126,17 @@ class TestCategory(models.Model):
     pub_date = models.DateField(auto_now=True)
     edit_date = models.DateField(auto_now=True)
     keyword=models.CharField(max_length=150,default='')
+    previous_year_keyword=models.CharField(max_length=150,default='')
     preview_keyword=models.CharField(max_length=150,default='')
+    preview_previous_year_keyword=models.CharField(max_length=150,default='')
+    show=models.BooleanField(default=False)
+    preview_show=models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['category', 'keyword','preview_keyword','pub_date', 'edit_date']
+        ordering = ['category', 'keyword','preview_keyword','pub_date', 'edit_date',
+                  'previous_year_keyword','preview_previous_year_keyword','show',
+                  'preview_show'
+                  ]
 
     def __str__(self):
         return self.category

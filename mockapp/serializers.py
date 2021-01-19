@@ -49,7 +49,9 @@ class MonthSerializer(serializers.ModelSerializer):
 class TestCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = TestCategory
-        fields = ['id', 'category', 'pub_date', 'edit_date','keyword','preview_keyword']
+        fields = ['id', 'category', 'pub_date', 'edit_date','keyword','preview_keyword',
+                'previous_year_keyword','preview_previous_year_keyword','show',
+                  'preview_show']
 
 
 class SubjectSerializer(serializers.ModelSerializer):
