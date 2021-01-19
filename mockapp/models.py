@@ -549,7 +549,7 @@ class Question(models.Model):
 class QuestionBiharPolice(models.Model):
     # pub_date = models.DateField()
     # edit_date = models.DateField()
-    test_name = models.ForeignKey(SSCCGLTestName, on_delete=models.CASCADE)
+    test_name = models.ForeignKey(BiharPoliceTestName, on_delete=models.CASCADE)
     category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     month = models.ForeignKey(Month, on_delete=models.CASCADE)
