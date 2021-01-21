@@ -567,7 +567,7 @@ class QuestionBiharPolice(models.Model):
     opt_c = models.TextField(help_text='Option c')
     opt_d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
-    correct_mark=models.FloatField(default=0)
+    correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0)
 
     class Meta:
@@ -605,8 +605,8 @@ class QuestionSSCCGL(models.Model):
     opt_c = models.TextField(help_text='Option c')
     opt_d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
-    correct_mark=models.FloatField(default=0)
-    negative_mark=models.FloatField(default=0)
+    correct_mark=models.FloatField(default=1)
+    negative_mark=models.FloatField(default=0.25)
 
     class Meta:
         ordering = [ 'test_name', 'category',
@@ -707,8 +707,8 @@ class QuestionSSCCHSL(models.Model):
     opt_c = models.TextField(help_text='Option c')
     opt_d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
-    correct_mark=models.FloatField(default=0)
-    negative_mark=models.FloatField(default=0)
+    correct_mark=models.FloatField(default=1)
+    negative_mark=models.FloatField(default=0.25)
 
     class Meta:
         ordering = [ 'test_name', 'category',

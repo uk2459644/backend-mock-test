@@ -78,8 +78,8 @@ urlpatterns = [
     path('rrb-group-d/<int:cid>/', rrb_groupd_questions_by_test_name),
     path('ssc-je-ce/<int:cid>/', ssc_je_ce_questions_by_test_name),
     path('ssc-je-ee/<int:cid>/', ssc_je_ee_questions_by_test_name),
-    path('ssc-chsl/<int:cid>/', ssc_chsl_questions_by_test_name),
-    path('ssc-cgl/<int:cid>/', ssc_cgl_questions_by_test_name),
+    path('ssc-chsl-testlist/<int:cid>/', ssc_chsl_questions_by_test_name),
+    path('ssc-cgl-testlist/<int:cid>/', ssc_cgl_questions_by_test_name),
     path('bihar-police/<int:cid>/', bihar_police_questions_by_test_name),
 
     # previous year list of questions by test names
