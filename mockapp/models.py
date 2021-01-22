@@ -529,17 +529,17 @@ class Question(models.Model):
     question_doc = models.BooleanField(default=False)
     question_number = models.IntegerField(null=True,blank=True)
     question = models.TextField(help_text='Write question')
-    opt_doc = models.BooleanField(default=False)
-    opt_a = models.TextField(help_text='Option a')
-    opt_b = models.TextField(help_text='Option b')
-    opt_c = models.TextField(help_text='Option c')
-    opt_d = models.TextField(help_text='Option d')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
 
     class Meta:
         ordering = [ 'test_name', 'category',
-                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
-                    'opt_c', 'opt_d', 'correct_opt', 'question_number']
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number']
 
     def __str__(self):
         return self.question
@@ -561,19 +561,19 @@ class QuestionBiharPolice(models.Model):
     question_doc = models.BooleanField(default=False)
     question_number = models.IntegerField(null=True,blank=True)
     question = models.TextField(help_text='Write question')
-    opt_doc = models.BooleanField(default=False)
-    opt_a = models.TextField(help_text='Option a')
-    opt_b = models.TextField(help_text='Option b')
-    opt_c = models.TextField(help_text='Option c')
-    opt_d = models.TextField(help_text='Option d')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
     correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0)
 
     class Meta:
         ordering = [ 'test_name', 'category',
-                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
-                    'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
                     'correct_mark','negative_mark']
 
     def __str__(self):
@@ -599,19 +599,19 @@ class QuestionSSCCGL(models.Model):
     question_doc = models.BooleanField(default=False)
     question_number = models.IntegerField(null=True,blank=True)
     question = models.TextField(help_text='Write question')
-    opt_doc = models.BooleanField(default=False)
-    opt_a = models.TextField(help_text='Option a')
-    opt_b = models.TextField(help_text='Option b')
-    opt_c = models.TextField(help_text='Option c')
-    opt_d = models.TextField(help_text='Option d')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
     correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0.25)
 
     class Meta:
         ordering = [ 'test_name', 'category',
-                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
-                    'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
                     'correct_mark','negative_mark']
 
     def __str__(self):
@@ -633,19 +633,19 @@ class QuestionSSCJECE(models.Model):
     question_doc = models.BooleanField(default=False)
     question_number = models.IntegerField(null=True,blank=True)
     question = models.TextField(help_text='Write question')
-    opt_doc = models.BooleanField(default=False)
-    opt_a = models.TextField(help_text='Option a')
-    opt_b = models.TextField(help_text='Option b')
-    opt_c = models.TextField(help_text='Option c')
-    opt_d = models.TextField(help_text='Option d')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
     correct_mark=models.FloatField(default=0)
     negative_mark=models.FloatField(default=0)
 
     class Meta:
         ordering = [ 'test_name', 'category',
-                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
-                    'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
                     'correct_mark','negative_mark']
 
     def __str__(self):
@@ -667,19 +667,19 @@ class QuestionSSCJEEE(models.Model):
     question_doc = models.BooleanField(default=False)
     question_number = models.IntegerField(null=True,blank=True)
     question = models.TextField(help_text='Write question')
-    opt_doc = models.BooleanField(default=False)
-    opt_a = models.TextField(help_text='Option a')
-    opt_b = models.TextField(help_text='Option b')
-    opt_c = models.TextField(help_text='Option c')
-    opt_d = models.TextField(help_text='Option d')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
     correct_mark=models.FloatField(default=0)
     negative_mark=models.FloatField(default=0)
 
     class Meta:
         ordering = [ 'test_name', 'category',
-                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
-                    'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
                     'correct_mark','negative_mark']
 
     def __str__(self):
@@ -701,19 +701,19 @@ class QuestionSSCCHSL(models.Model):
     question_doc = models.BooleanField(default=False)
     question_number = models.IntegerField(null=True,blank=True)
     question = models.TextField(help_text='Write question')
-    opt_doc = models.BooleanField(default=False)
-    opt_a = models.TextField(help_text='Option a')
-    opt_b = models.TextField(help_text='Option b')
-    opt_c = models.TextField(help_text='Option c')
-    opt_d = models.TextField(help_text='Option d')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
     correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0.25)
 
     class Meta:
         ordering = [ 'test_name', 'category',
-                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
-                    'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
                     'correct_mark','negative_mark']
 
     def __str__(self):
@@ -738,19 +738,19 @@ class PreviousYearQuestionSSCCGL(models.Model):
     question_doc = models.BooleanField(default=False)
     question_number = models.IntegerField(null=True,blank=True)
     question = models.TextField(help_text='Write question')
-    opt_doc = models.BooleanField(default=False)
-    opt_a = models.TextField(help_text='Option a')
-    opt_b = models.TextField(help_text='Option b')
-    opt_c = models.TextField(help_text='Option c')
-    opt_d = models.TextField(help_text='Option d')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
     correct_mark=models.FloatField(default=0)
     negative_mark=models.FloatField(default=0)
 
     class Meta:
         ordering = [ 'test_name', 'category',
-                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
-                    'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
                     'correct_mark','negative_mark']
 
     def __str__(self):
@@ -773,19 +773,19 @@ class PreviousYearQuestionSSCJECE(models.Model):
     question_doc = models.BooleanField(default=False)
     question_number = models.IntegerField(null=True,blank=True)
     question = models.TextField(help_text='Write question')
-    opt_doc = models.BooleanField(default=False)
-    opt_a = models.TextField(help_text='Option a')
-    opt_b = models.TextField(help_text='Option b')
-    opt_c = models.TextField(help_text='Option c')
-    opt_d = models.TextField(help_text='Option d')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
     correct_mark=models.FloatField(default=0)
     negative_mark=models.FloatField(default=0)
 
     class Meta:
         ordering = [ 'test_name', 'category',
-                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
-                    'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
                     'correct_mark','negative_mark']
 
     def __str__(self):
@@ -808,19 +808,19 @@ class PreviousYearQuestionSSCJEEE(models.Model):
     question_doc = models.BooleanField(default=False)
     question_number = models.IntegerField(null=True,blank=True)
     question = models.TextField(help_text='Write question')
-    opt_doc = models.BooleanField(default=False)
-    opt_a = models.TextField(help_text='Option a')
-    opt_b = models.TextField(help_text='Option b')
-    opt_c = models.TextField(help_text='Option c')
-    opt_d = models.TextField(help_text='Option d')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
     correct_mark=models.FloatField(default=0)
     negative_mark=models.FloatField(default=0)
 
     class Meta:
         ordering = [ 'test_name', 'category',
-                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
-                    'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
                     'correct_mark','negative_mark']
 
     def __str__(self):
@@ -843,19 +843,19 @@ class PreviousYearQuestionSSCCHSL(models.Model):
     question_doc = models.BooleanField(default=False)
     question_number = models.IntegerField(null=True,blank=True)
     question = models.TextField(help_text='Write question')
-    opt_doc = models.BooleanField(default=False)
-    opt_a = models.TextField(help_text='Option a')
-    opt_b = models.TextField(help_text='Option b')
-    opt_c = models.TextField(help_text='Option c')
-    opt_d = models.TextField(help_text='Option d')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
     correct_mark=models.FloatField(default=0)
     negative_mark=models.FloatField(default=0)
 
     class Meta:
         ordering = [ 'test_name', 'category',
-                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
-                    'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
                     'correct_mark','negative_mark']
 
     def __str__(self):
@@ -879,19 +879,19 @@ class QuestionRRBGroupD(models.Model):
     question_doc = models.BooleanField(default=False)
     question_number = models.IntegerField(null=True,blank=True)
     question = models.TextField(help_text='Write question')
-    opt_doc = models.BooleanField(default=False)
-    opt_a = models.TextField(help_text='Option a')
-    opt_b = models.TextField(help_text='Option b')
-    opt_c = models.TextField(help_text='Option c')
-    opt_d = models.TextField(help_text='Option d')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
     correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0.33)
 
     class Meta:
         ordering = [ 'test_name', 'category',
-                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
-                    'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
                     'correct_mark','negative_mark']
 
     def __str__(self):
@@ -913,19 +913,19 @@ class QuestionRRBNtpc(models.Model):
     question_doc = models.BooleanField(default=False)
     question_number = models.IntegerField(null=True,blank=True)
     question = models.TextField(help_text='Write question')
-    opt_doc = models.BooleanField(default=False)
-    opt_a = models.TextField(help_text='Option a')
-    opt_b = models.TextField(help_text='Option b')
-    opt_c = models.TextField(help_text='Option c')
-    opt_d = models.TextField(help_text='Option d')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
     correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0.33)
 
     class Meta:
         ordering = [ 'test_name', 'category',
-                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
-                    'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
                     'correct_mark','negative_mark']
 
     def __str__(self):
@@ -950,19 +950,19 @@ class PreviousYearQuestionRRBGroupD(models.Model):
     question_doc = models.BooleanField(default=False)
     question_number = models.IntegerField(null=True,blank=True)
     question = models.TextField(help_text='Write question')
-    opt_doc = models.BooleanField(default=False)
-    opt_a = models.TextField(help_text='Option a')
-    opt_b = models.TextField(help_text='Option b')
-    opt_c = models.TextField(help_text='Option c')
-    opt_d = models.TextField(help_text='Option d')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
     correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0.33)
 
     class Meta:
         ordering = [ 'test_name', 'category',
-                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
-                    'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
                     'correct_mark','negative_mark']
 
     def __str__(self):
@@ -985,19 +985,19 @@ class PreviousYearQuestionRRBNtpc(models.Model):
     question_doc = models.BooleanField(default=False)
     question_number = models.IntegerField(null=True,blank=True)
     question = models.TextField(help_text='Write question')
-    opt_doc = models.BooleanField(default=False)
-    opt_a = models.TextField(help_text='Option a')
-    opt_b = models.TextField(help_text='Option b')
-    opt_c = models.TextField(help_text='Option c')
-    opt_d = models.TextField(help_text='Option d')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
     correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0.33)
 
     class Meta:
         ordering = [ 'test_name', 'category',
-                    'subject', 'month', 'year', 'show', 'question', 'opt_a', 'opt_b',
-                    'opt_c', 'opt_d', 'correct_opt', 'question_number',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
                     'correct_mark','negative_mark']
 
     def __str__(self):

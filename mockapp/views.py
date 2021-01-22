@@ -55,6 +55,14 @@ def bihar_police_testlist(request):
         serializer = Bihar_Police_TestNameSerializer(testlist, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+def previous__year_bihar_police_testlist(request):
+
+    if request.method == 'GET':
+        testlist = BiharPoliceTestName.objects.filter(
+            is_previous_year_question=True,show_test=True).order_by('test_number')
+        serializer = Bihar_Police_TestNameSerializer(testlist, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
 def preview_bihar_police_testlist(request):
 
     if request.method == 'GET':
@@ -62,6 +70,15 @@ def preview_bihar_police_testlist(request):
             is_previous_year_question=False,show_test=False).order_by('test_number')
         serializer = Bihar_Police_TestNameSerializer(testlist, many=True)
         return JsonResponse(serializer.data, safe=False)
+
+def preview_previous__year_bihar_police_testlist(request):
+
+    if request.method == 'GET':
+        testlist = BiharPoliceTestName.objects.filter(
+            is_previous_year_question=True,show_test=False).order_by('test_number')
+        serializer = Bihar_Police_TestNameSerializer(testlist, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
          
 def bihar_police_questions_by_test_name(request, cid):
     if request.method == 'GET':
