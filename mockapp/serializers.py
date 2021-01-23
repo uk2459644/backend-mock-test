@@ -212,7 +212,7 @@ class Bihar_Police_QuestionSerializer(serializers.ModelSerializer):
         fields = ['id',  'test_name', 'category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt', 'question_number',
-                  'correct_mark','negative_mark']
+                  'correct_mark','correct_text','negative_mark']
 
 
 # RRB Question serializers
@@ -224,7 +224,7 @@ class RRB_NTPC_QuestionSerializer(serializers.ModelSerializer):
         fields = ['id',  'test_name', 'category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt', 'question_number',
-                  'correct_mark','negative_mark']
+                  'correct_mark','correct_text','negative_mark']
 
 
 class RRB_GROUPD_QuestionSerializer(serializers.ModelSerializer):
@@ -233,7 +233,7 @@ class RRB_GROUPD_QuestionSerializer(serializers.ModelSerializer):
         fields = ['id',  'test_name', 'category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt',
-                   'question_number','correct_mark','negative_mark']
+                   'question_number','correct_mark','correct_text','negative_mark']
 
 # RRB Previous Year serializers here
 
@@ -244,7 +244,7 @@ class PreviousYearRRB_NTPC_QuestionSerializer(serializers.ModelSerializer):
         fields = ['id',  'test_name', 'category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt', 
-                  'question_number','correct_mark','negative_mark']
+                  'question_number','correct_mark','correct_text','negative_mark']
 
 
 class PreviousYearRRB_GROUPD_QuestionSerializer(serializers.ModelSerializer):
@@ -253,7 +253,7 @@ class PreviousYearRRB_GROUPD_QuestionSerializer(serializers.ModelSerializer):
         fields = ['id',  'test_name', 'category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt', 
-                  'question_number','correct_mark','negative_mark']
+                  'question_number','correct_mark','correct_text','negative_mark']
 
  # SSC Questions serializers here
 
@@ -264,7 +264,7 @@ class SSC_CGL_QuestionSerializer(serializers.ModelSerializer):
         fields = ['id',  'test_name', 'category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt',
-                   'question_number','correct_mark','negative_mark']
+                   'question_number','correct_mark','correct_text','negative_mark']
 
 
 class SSC_CHSL_QuestionSerializer(serializers.ModelSerializer):
@@ -273,7 +273,7 @@ class SSC_CHSL_QuestionSerializer(serializers.ModelSerializer):
         fields = ['id',  'test_name', 'category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt',
-                   'question_number','correct_mark','negative_mark']
+                   'question_number','correct_mark','correct_text','negative_mark']
 
 
 class SSC_JE_EE_QuestionSerializer(serializers.ModelSerializer):
@@ -282,7 +282,7 @@ class SSC_JE_EE_QuestionSerializer(serializers.ModelSerializer):
         fields = ['id',  'test_name', 'category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt',
-                   'question_number','correct_mark','negative_mark']
+                   'question_number','correct_mark','correct_text','negative_mark']
 
 
 class SSC_JE_CE_QuestionSerializer(serializers.ModelSerializer):
@@ -291,7 +291,7 @@ class SSC_JE_CE_QuestionSerializer(serializers.ModelSerializer):
         fields = ['id',  'test_name', 'category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt',
-                   'question_number','correct_mark','negative_mark']
+                   'question_number','correct_mark','correct_text','negative_mark']
 
 # Previous Year SSC Question Serializer
 
@@ -302,7 +302,7 @@ class PreviousYearSSC_CGL_QuestionSerializer(serializers.ModelSerializer):
         fields = ['id',  'test_name', 'category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt',
-                   'question_number','correct_mark','negative_mark']
+                   'question_number','correct_mark','correct_text','negative_mark']
 
 
 class PreviousYearSSC_CHSL_QuestionSerializer(serializers.ModelSerializer):
@@ -311,7 +311,7 @@ class PreviousYearSSC_CHSL_QuestionSerializer(serializers.ModelSerializer):
         fields = ['id',  'test_name', 'category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt',
-                   'question_number','correct_mark','negative_mark']
+                   'question_number','correct_mark','correct_text','negative_mark']
 
 
 class PreviousYearSSC_JE_EE_QuestionSerializer(serializers.ModelSerializer):
@@ -320,7 +320,7 @@ class PreviousYearSSC_JE_EE_QuestionSerializer(serializers.ModelSerializer):
         fields = ['id',  'test_name', 'category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt',
-                   'question_number','correct_mark','negative_mark']
+                   'question_number','correct_mark','correct_text','negative_mark']
 
 
 class PreviousYearSSC_JE_CE_QuestionSerializer(serializers.ModelSerializer):
@@ -329,7 +329,7 @@ class PreviousYearSSC_JE_CE_QuestionSerializer(serializers.ModelSerializer):
         fields = ['id',  'test_name', 'category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt',
-                   'question_number','correct_mark','negative_mark']
+                   'question_number','correct_mark','correct_text','negative_mark']
 
 # Question model serializer
 

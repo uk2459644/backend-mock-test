@@ -567,6 +567,7 @@ class QuestionBiharPolice(models.Model):
     c = models.TextField(help_text='Option c')
     d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
+    correct_text=models.TextField(default='',help_text='Correct option value')
     correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0)
 
@@ -574,7 +575,8 @@ class QuestionBiharPolice(models.Model):
         ordering = [ 'test_name', 'category',
                     'subject', 'month', 'year', 'show', 'question', 'a', 'b',
                     'c', 'd', 'correct_opt', 'question_number',
-                    'correct_mark','negative_mark']
+                    'correct_mark','correct_text','correct_text',
+                    'negative_mark']
 
     def __str__(self):
         return self.question
@@ -605,14 +607,15 @@ class QuestionSSCCGL(models.Model):
     c = models.TextField(help_text='Option c')
     d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
+    correct_text=models.TextField(default='',help_text='Correct option value')
     correct_mark=models.FloatField(default=1)
-    negative_mark=models.FloatField(default=0.25)
+    negative_mark=models.FloatField(default=0.5)
 
     class Meta:
         ordering = [ 'test_name', 'category',
                     'subject', 'month', 'year', 'show', 'question', 'a', 'b',
                     'c', 'd', 'correct_opt', 'question_number',
-                    'correct_mark','negative_mark']
+                    'correct_mark','correct_text','negative_mark']
 
     def __str__(self):
         return self.question
@@ -639,14 +642,15 @@ class QuestionSSCJECE(models.Model):
     c = models.TextField(help_text='Option c')
     d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
-    correct_mark=models.FloatField(default=0)
+    correct_text=models.TextField(default='',help_text='Correct option value')
+    correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0)
 
     class Meta:
         ordering = [ 'test_name', 'category',
                     'subject', 'month', 'year', 'show', 'question', 'a', 'b',
                     'c', 'd', 'correct_opt', 'question_number',
-                    'correct_mark','negative_mark']
+                    'correct_mark','correct_text','negative_mark']
 
     def __str__(self):
         return self.question
@@ -673,14 +677,15 @@ class QuestionSSCJEEE(models.Model):
     c = models.TextField(help_text='Option c')
     d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
-    correct_mark=models.FloatField(default=0)
+    correct_text=models.TextField(default='',help_text='Correct option value')
+    correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0)
 
     class Meta:
         ordering = [ 'test_name', 'category',
                     'subject', 'month', 'year', 'show', 'question', 'a', 'b',
                     'c', 'd', 'correct_opt', 'question_number',
-                    'correct_mark','negative_mark']
+                    'correct_mark','correct_text','negative_mark']
 
     def __str__(self):
         return self.question
@@ -707,6 +712,7 @@ class QuestionSSCCHSL(models.Model):
     c = models.TextField(help_text='Option c')
     d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
+    correct_text=models.TextField(default='',help_text='Correct option value')
     correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0.25)
 
@@ -714,7 +720,7 @@ class QuestionSSCCHSL(models.Model):
         ordering = [ 'test_name', 'category',
                     'subject', 'month', 'year', 'show', 'question', 'a', 'b',
                     'c', 'd', 'correct_opt', 'question_number',
-                    'correct_mark','negative_mark']
+                    'correct_mark','correct_text','negative_mark']
 
     def __str__(self):
         return self.question
@@ -744,14 +750,15 @@ class PreviousYearQuestionSSCCGL(models.Model):
     c = models.TextField(help_text='Option c')
     d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
-    correct_mark=models.FloatField(default=0)
+    correct_text=models.TextField(default='',help_text='Correct option value')
+    correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0)
 
     class Meta:
         ordering = [ 'test_name', 'category',
                     'subject', 'month', 'year', 'show', 'question', 'a', 'b',
                     'c', 'd', 'correct_opt', 'question_number',
-                    'correct_mark','negative_mark']
+                    'correct_mark','correct_text','negative_mark']
 
     def __str__(self):
         return self.question
@@ -779,14 +786,15 @@ class PreviousYearQuestionSSCJECE(models.Model):
     c = models.TextField(help_text='Option c')
     d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
-    correct_mark=models.FloatField(default=0)
+    correct_text=models.TextField(default='',help_text='Correct option value')
+    correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0)
 
     class Meta:
         ordering = [ 'test_name', 'category',
                     'subject', 'month', 'year', 'show', 'question', 'a', 'b',
                     'c', 'd', 'correct_opt', 'question_number',
-                    'correct_mark','negative_mark']
+                    'correct_mark','correct_text','negative_mark']
 
     def __str__(self):
         return self.question
@@ -814,14 +822,15 @@ class PreviousYearQuestionSSCJEEE(models.Model):
     c = models.TextField(help_text='Option c')
     d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
-    correct_mark=models.FloatField(default=0)
+    correct_text=models.TextField(default='',help_text='Correct option value')
+    correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0)
 
     class Meta:
         ordering = [ 'test_name', 'category',
                     'subject', 'month', 'year', 'show', 'question', 'a', 'b',
                     'c', 'd', 'correct_opt', 'question_number',
-                    'correct_mark','negative_mark']
+                    'correct_mark','correct_text','negative_mark']
 
     def __str__(self):
         return self.question
@@ -849,14 +858,15 @@ class PreviousYearQuestionSSCCHSL(models.Model):
     c = models.TextField(help_text='Option c')
     d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
-    correct_mark=models.FloatField(default=0)
+    correct_text=models.TextField(default='',help_text='Correct option value')
+    correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0)
 
     class Meta:
         ordering = [ 'test_name', 'category',
                     'subject', 'month', 'year', 'show', 'question', 'a', 'b',
                     'c', 'd', 'correct_opt', 'question_number',
-                    'correct_mark','negative_mark']
+                    'correct_mark','correct_text','negative_mark']
 
     def __str__(self):
         return self.question
@@ -885,6 +895,7 @@ class QuestionRRBGroupD(models.Model):
     c = models.TextField(help_text='Option c')
     d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
+    correct_text=models.TextField(default='',help_text='Correct option value')
     correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0.33)
 
@@ -892,7 +903,7 @@ class QuestionRRBGroupD(models.Model):
         ordering = [ 'test_name', 'category',
                     'subject', 'month', 'year', 'show', 'question', 'a', 'b',
                     'c', 'd', 'correct_opt', 'question_number',
-                    'correct_mark','negative_mark']
+                    'correct_mark','correct_text','negative_mark']
 
     def __str__(self):
         return self.question
@@ -919,6 +930,7 @@ class QuestionRRBNtpc(models.Model):
     c = models.TextField(help_text='Option c')
     d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
+    correct_text=models.TextField(default='',help_text='Correct option value')
     correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0.33)
 
@@ -926,7 +938,7 @@ class QuestionRRBNtpc(models.Model):
         ordering = [ 'test_name', 'category',
                     'subject', 'month', 'year', 'show', 'question', 'a', 'b',
                     'c', 'd', 'correct_opt', 'question_number',
-                    'correct_mark','negative_mark']
+                    'correct_mark','correct_text','negative_mark']
 
     def __str__(self):
         return self.question
@@ -956,6 +968,7 @@ class PreviousYearQuestionRRBGroupD(models.Model):
     c = models.TextField(help_text='Option c')
     d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
+    correct_text=models.TextField(default='',help_text='Correct option value')
     correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0.33)
 
@@ -963,7 +976,7 @@ class PreviousYearQuestionRRBGroupD(models.Model):
         ordering = [ 'test_name', 'category',
                     'subject', 'month', 'year', 'show', 'question', 'a', 'b',
                     'c', 'd', 'correct_opt', 'question_number',
-                    'correct_mark','negative_mark']
+                    'correct_mark','correct_text','negative_mark']
 
     def __str__(self):
         return self.question
@@ -991,6 +1004,7 @@ class PreviousYearQuestionRRBNtpc(models.Model):
     c = models.TextField(help_text='Option c')
     d = models.TextField(help_text='Option d')
     correct_opt = models.CharField(max_length=1)
+    correct_text=models.TextField(default='',help_text='Correct option value')
     correct_mark=models.FloatField(default=1)
     negative_mark=models.FloatField(default=0.33)
 
@@ -998,7 +1012,7 @@ class PreviousYearQuestionRRBNtpc(models.Model):
         ordering = [ 'test_name', 'category',
                     'subject', 'month', 'year', 'show', 'question', 'a', 'b',
                     'c', 'd', 'correct_opt', 'question_number',
-                    'correct_mark','negative_mark']
+                    'correct_mark','correct_text','negative_mark']
 
     def __str__(self):
         return self.question
