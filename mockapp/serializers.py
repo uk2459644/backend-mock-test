@@ -63,7 +63,7 @@ class SubjectSerializer(serializers.ModelSerializer):
 class TestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = TestName
-        fields = ['id', 'month', 'year', 'test_name',
+        fields = ['id', 'month', 'year', 'test_name','test_time',
                    'category', 'keyword']
 
 # Bihar police test name serializer
@@ -71,7 +71,7 @@ class TestNameSerializer(serializers.ModelSerializer):
 class Bihar_Police_TestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = BiharPoliceTestName
-        fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
+        fields = ['id', 'test_number', 'month', 'year', 'test_name','test_time', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
                   'language',
@@ -83,7 +83,7 @@ class Bihar_Police_TestNameSerializer(serializers.ModelSerializer):
 class RRB_NTPC_TestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = RRBNtpcTestName
-        fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
+        fields = ['id', 'test_number', 'month', 'year', 'test_name','test_time', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
                   'language',
@@ -93,7 +93,7 @@ class RRB_NTPC_TestNameSerializer(serializers.ModelSerializer):
 class RRB_GROUPD_TestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = RRBGroupDTestName
-        fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
+        fields = ['id', 'test_number', 'month', 'year', 'test_name','test_time', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
                   'language',
@@ -105,7 +105,7 @@ class RRB_GROUPD_TestNameSerializer(serializers.ModelSerializer):
 class PreviousYearRRB_NTPC_TestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = PreviousYearRRBNtpcTestName
-        fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
+        fields = ['id', 'test_number', 'month', 'year', 'test_name','test_time', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
                   'language',
@@ -115,7 +115,7 @@ class PreviousYearRRB_NTPC_TestNameSerializer(serializers.ModelSerializer):
 class PreviousYearRRB_GROUPD_TestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = PreviousYearRRBGroupDTestName
-        fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
+        fields = ['id', 'test_number', 'month', 'year', 'test_name','test_time', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
                   'language',
@@ -127,7 +127,7 @@ class PreviousYearRRB_GROUPD_TestNameSerializer(serializers.ModelSerializer):
 class SSC_CGL_TestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = SSCCGLTestName
-        fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
+        fields = ['id', 'test_number', 'month', 'year', 'test_name','test_time', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
                   'language',
@@ -137,7 +137,7 @@ class SSC_CGL_TestNameSerializer(serializers.ModelSerializer):
 class SSC_CHSL_TestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = SSCCHSLTestName
-        fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
+        fields = ['id', 'test_number', 'month', 'year', 'test_name','test_time', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
                   'language',
@@ -147,7 +147,7 @@ class SSC_CHSL_TestNameSerializer(serializers.ModelSerializer):
 class SSC_JE_EE_TestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = SSCJEEETestName
-        fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
+        fields = ['id', 'test_number', 'month', 'year', 'test_name','test_time', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
                   'language',
@@ -157,7 +157,7 @@ class SSC_JE_EE_TestNameSerializer(serializers.ModelSerializer):
 class SSC_JE_CE_TestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = SscJeCeTestName
-        fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
+        fields = ['id', 'test_number', 'month', 'year', 'test_name','test_time', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
                   'language',
@@ -169,7 +169,7 @@ class SSC_JE_CE_TestNameSerializer(serializers.ModelSerializer):
 class PreviousYearSSC_CGL_TestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = PreviousYearSSCCGLTestName
-        fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
+        fields = ['id', 'test_number', 'month', 'year', 'test_name','test_time', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
                   'language',
@@ -179,7 +179,7 @@ class PreviousYearSSC_CGL_TestNameSerializer(serializers.ModelSerializer):
 class PreviousYearSSC_CHSL_TestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = PreviousYearSSCCHSLTestName
-        fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
+        fields = ['id', 'test_number', 'month', 'year', 'test_name','test_time', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
                   'language',
@@ -189,7 +189,7 @@ class PreviousYearSSC_CHSL_TestNameSerializer(serializers.ModelSerializer):
 class PreviousYearSSC_JE_EE_TestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = PreviousYearSSCJEEETestName
-        fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
+        fields = ['id', 'test_number', 'month', 'year', 'test_name','test_time', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
                   'language',
@@ -199,7 +199,7 @@ class PreviousYearSSC_JE_EE_TestNameSerializer(serializers.ModelSerializer):
 class PreviousYearSSC_JE_CE_TestNameSerializer(serializers.ModelSerializer):
     class Meta:
         model = PreviousYearSscJeCeTestName
-        fields = ['id', 'test_number', 'month', 'year', 'test_name', 'show_test',
+        fields = ['id', 'test_number', 'month', 'year', 'test_name','test_time', 'show_test',
                   'is_previous_year_question',
                   'total_no_of_question',
                   'language',
@@ -279,7 +279,7 @@ class SSC_CHSL_QuestionSerializer(serializers.ModelSerializer):
 class SSC_JE_EE_QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = QuestionSSCJEEE
-        fields = ['id',  'test_name', 'category', 'subject', 'month',
+        fields = ['id',  'test_name','category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt',
                    'question_number','correct_mark','correct_text','negative_mark']
@@ -317,7 +317,7 @@ class PreviousYearSSC_CHSL_QuestionSerializer(serializers.ModelSerializer):
 class PreviousYearSSC_JE_EE_QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = PreviousYearQuestionSSCJEEE
-        fields = ['id',  'test_name', 'category', 'subject', 'month',
+        fields = ['id',  'test_name','category', 'subject', 'month',
                   'comprehension_show', 'comprehension_doc', 'question_doc', 'doc', 'comprehension',
                   'year', 'show', 'question', 'a', 'b', 'c', 'd', 'correct_opt',
                    'question_number','correct_mark','correct_text','negative_mark']

@@ -191,13 +191,16 @@ class BiharPoliceTestName(models.Model):
     edit_date = models.DateField()
     category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
     show_test=models.BooleanField(default=True)
+    test_time=models.IntegerField(default=60,help_text='test time in minutes')
+
 
     class Meta:
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
-                    'test_name', 'pub_date', 'edit_date', 'category']
+                    'test_name','test_time',
+                     'pub_date', 'edit_date', 'category']
 
     def __str__(self):
         return self.test_name
@@ -220,13 +223,15 @@ class RRBGroupDTestName(models.Model):
     edit_date = models.DateField()
     category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
     show_test=models.BooleanField(default=True)
+    test_time=models.IntegerField(default=60,help_text='test time in minutes')
+
 
     class Meta:
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
-                    'test_name', 'pub_date', 'edit_date', 'category']
+                    'test_name','test_time', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
         return self.test_name
@@ -245,13 +250,15 @@ class RRBNtpcTestName(models.Model):
     edit_date = models.DateField()
     category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
     show_test=models.BooleanField(default=True)
+    test_time=models.IntegerField(default=60,help_text='test time in minutes')
+
 
     class Meta:
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
-                    'test_name', 'pub_date', 'edit_date', 'category']
+                    'test_name','test_time', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
         return self.test_name
@@ -272,13 +279,15 @@ class PreviousYearRRBGroupDTestName(models.Model):
     edit_date = models.DateField()
     category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
     show_test=models.BooleanField(default=True)
+    test_time=models.IntegerField(default=60,help_text='test time in minutes')
+
 
     class Meta:
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
-                    'test_name', 'pub_date', 'edit_date', 'category']
+                    'test_name','test_time', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
         return self.test_name
@@ -297,13 +306,15 @@ class PreviousYearRRBNtpcTestName(models.Model):
     edit_date = models.DateField()
     category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
     show_test=models.BooleanField(default=True)
+    test_time=models.IntegerField(default=60,help_text='test time in minutes')
+
 
     class Meta:
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
-                    'test_name', 'pub_date', 'edit_date', 'category']
+                    'test_name','test_time', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
         return self.test_name
@@ -325,13 +336,15 @@ class SscJeCeTestName(models.Model):
     edit_date = models.DateField()
     category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
     show_test=models.BooleanField(default=True)
+    test_time=models.IntegerField(default=60,help_text='test time in minutes')
+
 
     class Meta:
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
-                    'test_name', 'pub_date', 'edit_date', 'category']
+                    'test_name','test_time', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
         return self.test_name
@@ -350,13 +363,15 @@ class SSCJEEETestName(models.Model):
     edit_date = models.DateField()
     category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
     show_test=models.BooleanField(default=True)
+    test_time=models.IntegerField(default=60,help_text='test time in minutes')
+
 
     class Meta:
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
-                    'test_name', 'pub_date', 'edit_date', 'category']
+                    'test_name','test_time', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
         return self.test_name
@@ -375,13 +390,15 @@ class SSCCHSLTestName(models.Model):
     edit_date = models.DateField()
     category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
     show_test=models.BooleanField(default=True)
+    test_time=models.IntegerField(default=60,help_text='test time in minutes')
+
 
     class Meta:
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
-                    'test_name', 'pub_date', 'edit_date', 'category']
+                    'test_name','test_time', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
         return self.test_name
@@ -400,13 +417,15 @@ class SSCCGLTestName(models.Model):
     edit_date = models.DateField()
     category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
     show_test=models.BooleanField(default=True)
+    test_time=models.IntegerField(default=60,help_text='test time in minutes')
+
 
     class Meta:
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
-                    'test_name', 'pub_date', 'edit_date', 'category']
+                    'test_name','test_time', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
         return self.test_name
@@ -427,13 +446,15 @@ class PreviousYearSscJeCeTestName(models.Model):
     edit_date = models.DateField()
     category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
     show_test=models.BooleanField(default=True)
+    test_time=models.IntegerField(default=60,help_text='test time in minutes')
+
 
     class Meta:
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
-                    'test_name', 'pub_date', 'edit_date', 'category']
+                    'test_name','test_time', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
         return self.test_name
@@ -452,13 +473,15 @@ class PreviousYearSSCJEEETestName(models.Model):
     edit_date = models.DateField()
     category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
     show_test=models.BooleanField(default=True)
+    test_time=models.IntegerField(default=60,help_text='test time in minutes')
+
 
     class Meta:
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
-                    'test_name', 'pub_date', 'edit_date', 'category']
+                    'test_name','test_time', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
         return self.test_name
@@ -477,13 +500,15 @@ class PreviousYearSSCCHSLTestName(models.Model):
     edit_date = models.DateField()
     category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
     show_test=models.BooleanField(default=True)
+    test_time=models.IntegerField(default=60,help_text='test time in minutes')
+
 
     class Meta:
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
                      'language',
-                    'test_name', 'pub_date', 'edit_date', 'category']
+                    'test_name','test_time', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
         return self.test_name
@@ -502,13 +527,15 @@ class PreviousYearSSCCGLTestName(models.Model):
     edit_date = models.DateField()
     category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
     show_test=models.BooleanField(default=True)
+    test_time=models.IntegerField(default=60,help_text='test time in minutes')
+
 
     class Meta:
         ordering = ['test_number', 'year', 'month','show_test',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
-                    'test_name', 'pub_date', 'edit_date', 'category']
+                    'test_name','test_time', 'pub_date', 'edit_date', 'category']
 
     def __str__(self):
         return self.test_name
@@ -682,7 +709,7 @@ class QuestionSSCJEEE(models.Model):
     negative_mark=models.FloatField(default=0)
 
     class Meta:
-        ordering = [ 'test_name', 'category',
+        ordering = [ 'test_name','category',
                     'subject', 'month', 'year', 'show', 'question', 'a', 'b',
                     'c', 'd', 'correct_opt', 'question_number',
                     'correct_mark','correct_text','negative_mark']
