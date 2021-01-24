@@ -58,20 +58,20 @@ urlpatterns = [
 
 
     #list of previous year test names by categories
-    path('previous-year/ssc-cgl-testlist/',ssc_cgl_testlist_previous_year),
-    path('previous-year/ssc-chsl-testlist/',ssc_chsl_testlist_previous_year),
-    path('previous-year/ssc-je-ee/',ssc_je_ee_testlist_previous_year),
-    path('previous-year/ssc-je-ce/',ssc_je_ce_testlist_previous_year),
-    path('previous-year/rrb-ntpc/',rrb_ntpc_testlist_previous_year),
-    path('previous-year/rrb-group-d/',rrb_groupd_testlist_previous_year),
+    path('previous-year-ssc-cgl-testlist/',ssc_cgl_testlist_previous_year),
+    path('previous-year-ssc-chsl-testlist/',ssc_chsl_testlist_previous_year),
+    path('previous-year-ssc-je-ee/',ssc_je_ee_testlist_previous_year),
+    path('previous-year-ssc-je-ce/',ssc_je_ce_testlist_previous_year),
+    path('previous-year-rrb-ntpc/',rrb_ntpc_testlist_previous_year),
+    path('previous-year-rrb-group-d/',rrb_groupd_testlist_previous_year),
 
      # preview list of previous year test names by categories
-    path('previous-year/ssc-cgl-testlist/preview/',preview_ssc_cgl_testlist_previous_year),
-    path('previous-year/ssc-chsl-testlist/preview/',preview_ssc_chsl_testlist_previous_year),
-    path('previous-year/ssc-je-ee/preview/',preview_ssc_je_ee_testlist_previous_year),
-    path('previous-year/ssc-je-ce/preview/',preview_ssc_je_ce_testlist_previous_year),
-    path('previous-year/rrb-ntpc/preview/',preview_rrb_ntpc_testlist_previous_year),
-    path('previous-year/rrb-group-d/preview/',preview_rrb_ntpc_testlist_previous_year),
+    path('previous-year-ssc-cgl-testlist/preview/',preview_ssc_cgl_testlist_previous_year),
+    path('previous-year-ssc-chsl-testlist/preview/',preview_ssc_chsl_testlist_previous_year),
+    path('previous-year-ssc-je-ee/preview/',preview_ssc_je_ee_testlist_previous_year),
+    path('previous-year-ssc-je-ce/preview/',preview_ssc_je_ce_testlist_previous_year),
+    path('previous-year-rrb-ntpc/preview/',preview_rrb_ntpc_testlist_previous_year),
+    path('previous-year-rrb-group-d/preview/',preview_rrb_ntpc_testlist_previous_year),
      
     # list of questions by test names
     path('rrb-ntpc/<int:cid>/', rrb_ntpc_questions_by_test_name),
@@ -83,12 +83,12 @@ urlpatterns = [
     path('bihar-police/<int:cid>/', bihar_police_questions_by_test_name),
 
     # previous year list of questions by test names
-    path('previous-year/rrb-ntpc/<int:cid>/',previous_year_rrb_ntpc_questions_by_test_name),
-    path('previous-year/rrb-group-d/<int:cid>/', previous_year_rrb_groupd_questions_by_test_name),
-    path('previous-year/ssc-je-ce/<int:cid>/', previous_year_ssc_je_ce_questions_by_test_name),
-    path('previous-year/ssc-je-ee/<int:cid>/', previous_year_ssc_je_ee_questions_by_test_name),
-    path('previous-year/ssc-chsl-testlist/<int:cid>/', previous_year_ssc_chsl_questions_by_test_name),
-    path('previous-year/ssc-cgl-testlist/<int:cid>/', previous_year_ssc_cgl_questions_by_test_name),
+    path('previous-year-rrb-ntpc/<int:cid>/',previous_year_rrb_ntpc_questions_by_test_name),
+    path('previous-year-rrb-group-d/<int:cid>/', previous_year_rrb_groupd_questions_by_test_name),
+    path('previous-year-ssc-je-ce/<int:cid>/', previous_year_ssc_je_ce_questions_by_test_name),
+    path('previous-year-ssc-je-ee/<int:cid>/', previous_year_ssc_je_ee_questions_by_test_name),
+    path('previous-year-ssc-chsl-testlist/<int:cid>/', previous_year_ssc_chsl_questions_by_test_name),
+    path('previous-year-ssc-cgl-testlist/<int:cid>/', previous_year_ssc_cgl_questions_by_test_name),
 
 ]
 #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
