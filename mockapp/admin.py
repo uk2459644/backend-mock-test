@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import *
-
-
+from django.urls import reverse
+from django.utils.http import urlencode
+from django.utils.html import format_html
 
 
 
@@ -74,47 +75,89 @@ class InformationAdmin(admin.ModelAdmin):
 # Bihar Police test name  models here
 @admin.register(BiharPoliceTestName)
 class Bihar_Police_TestNameAdmin(admin.ModelAdmin):
-    list_display = ['test_name', 'category']
+    list_display = ['test_name', 'category','view_question_link']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test', 'month', 'year',
                   'language',
                    'is_previous_year_question', 'category']
 
 
-    changelist_links = ['questionbiharpolice']
+    def view_question_link(self, obj):
+        
+        url = (
+            reverse("admin:mockapp_questionbiharpolice_changelist")
+            + "?"
+            + urlencode({"test_name__id": f"{obj.id}"})
+        )
+        return format_html('<a href="{}"> Questions</a>', url)
+
+    view_question_link.short_description = "Questions"
+
 # RRB Test name models registered here
 
 
 @admin.register(RRBNtpcTestName)
 class RRB_NTPC_TestNameAdmin(admin.ModelAdmin):
-    list_display = ['test_name', 'category']
+    list_display = ['test_name', 'category','view_question_link']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test', 'month', 'year',
                   'language',
                    'is_previous_year_question', 'category']
 
+   
+    def view_question_link(self, obj):
+        
+        url = (
+            reverse("admin:mockapp_questionrrbntpc_changelist")
+            + "?"
+            + urlencode({"test_name__id": f"{obj.id}"})
+        )
+        return format_html('<a href="{}"> Questions</a>', url)
+
+    view_question_link.short_description = "Questions"                
+
 
 @admin.register(RRBGroupDTestName)
 class RRB_GROUPD_TestNameAdmin(admin.ModelAdmin):
-    list_display = ['test_name', 'category']
+    list_display = ['test_name', 'category','view_question_link']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test'
                     ,'language'
                    , 'month', 'year',
                    'is_previous_year_question', 'category']
 
+    def view_question_link(self, obj):
+        
+        url = (
+            reverse("admin:mockapp_questionrrbgroupd_changelist")
+            + "?"
+            + urlencode({"test_name__id": f"{obj.id}"})
+        )
+        return format_html('<a href="{}"> Questions</a>', url)
+
+    view_question_link.short_description = "Questions"
 # Previous year RRB Test name models registered here
 
 
 @admin.register(PreviousYearRRBGroupDTestName)
 class PreviousYearRRB_GROUPD_TestNameAdmin(admin.ModelAdmin):
-    list_display = ['test_name', 'category']
+    list_display = ['test_name', 'category','view_question_link']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
                   'language', 
                   'month', 'year',
                    'is_previous_year_question', 'category']
+ 
+    def view_question_link(self, obj):
+        
+        url = (
+            reverse("admin:mockapp_previousyearquestionrrbgroupd_changelist")
+            + "?"
+            + urlencode({"test_name__id": f"{obj.id}"})
+        )
+        return format_html('<a href="{}"> Questions</a>', url)
 
+    view_question_link.short_description = "Questions"
 
 @admin.register(PreviousYearRRBNtpcTestName)
 class PreviousYearRRB_NTPC_TestNameAdmin(admin.ModelAdmin):
@@ -131,23 +174,43 @@ class PreviousYearRRB_NTPC_TestNameAdmin(admin.ModelAdmin):
 
 @admin.register(SSCCGLTestName)
 class Ssc_Cgl_TestNameAdmin(admin.ModelAdmin):
-    list_display = ['test_name', 'category']
+    list_display = ['test_name', 'category','view_question_link']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
                     'language',
                      'month', 'year',
                    'is_previous_year_question', 'category']
 
+    def view_question_link(self, obj):
+        
+        url = (
+            reverse("admin:mockapp_questionssccgl_changelist")
+            + "?"
+            + urlencode({"test_name__id": f"{obj.id}"})
+        )
+        return format_html('<a href="{}"> Questions</a>', url)
+
+    view_question_link.short_description = "Questions"
 
 @admin.register(SSCCHSLTestName)
 class Ssc_Chsl_TestNameAdmin(admin.ModelAdmin):
-    list_display = ['test_name', 'category']
+    list_display = ['test_name', 'category','view_question_link']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
                     'language',
                      'month', 'year',
                    'is_previous_year_question', 'category']
 
+    def view_question_link(self, obj):
+        
+        url = (
+            reverse("admin:mockapp_questionsscchsl_changelist")
+            + "?"
+            + urlencode({"test_name__id": f"{obj.id}"})
+        )
+        return format_html('<a href="{}"> Questions</a>', url)
+
+    view_question_link.short_description = "Questions"
 
 @admin.register(SSCJEEETestName)
 class Ssc_Je_Ee_TestNameAdmin(admin.ModelAdmin):
