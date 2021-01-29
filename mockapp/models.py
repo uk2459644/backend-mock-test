@@ -176,6 +176,38 @@ class TestName(models.Model):
     def __str__(self):
         return self.test_name
 
+# Job Info models are here 
+class JobInfo(models.Model):
+    pub_date=models.DateTimeField(auto_now_add=True)
+    month=models.ForeignKey(Month,on_delete=models.SET_NULL,null=True,blank=True)
+    year=models.ForeignKey(Year,on_delete=models.SET_NULL,null=True,blank=True)
+    info_no=models.IntegerField(null=True,blank=True)
+    title=models.CharField(max_length=200,blank=True,null=True)
+    short_description=models.TextField(blank=True,null=True)
+    category=models.ForeignKey(TestCategory,on_delete=models.SET_NULL,null=True,blank=True)
+    cat_text=models.CharField(max_length=150,help_text='Write category in text, which is choosen above.')
+    image=models.TextField(null=True,blank=True)
+
+    class Meta:
+        ordering=['pub_date','title','short_description','category',
+        'cat_text','month','year','image','info_no'
+        ]
+
+    def __str__(self):
+        return self.title    
+
+class JobInfoPoints(models.Model):
+    point_no=models.IntegerField(null=True,blank=True)
+    job_info=models.ForeignKey(JobInfo,on_delete=models.CASCADE)
+    title=models.CharField(max_length=150)
+    description=models.TextField()
+
+    class Meta:
+        ordering=['point_no','job_info','title','description']
+
+    def __str__(self):
+        return self.title    
+
 # BIHAR POLICE Test name models here
 
 class BiharPoliceTestName(models.Model):

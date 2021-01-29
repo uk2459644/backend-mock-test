@@ -65,6 +65,19 @@ class TestNameSerializer(serializers.ModelSerializer):
         model = TestName
         fields = ['id', 'month', 'year', 'test_name','test_time',
                    'category', 'keyword']
+#Job info and point serilizers
+class JobInfoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=JobInfo
+        fields =[
+            'id','title','category','pub_date','short_description','cat_text'
+            ,'month','year','image','info_no'
+        ]
+
+class JobInfoPointSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=JobInfoPoints
+        fields=['id','point_info','job_info','title','description']
 
 # Bihar police test name serializer
 

@@ -72,6 +72,29 @@ class InformationAdmin(admin.ModelAdmin):
     search_fields = ['month', 'info_title', 'meassage']
     list_filter = ['year', 'month']
 
+# Job Info and points models are here 
+@admin.register(JobInfo)
+class JobInfoAdmin(admin.ModelAdmin):
+    list_display=['title','info_no','view_points_link']
+    search_fields=['title']
+    list_filter=['year','month','category']
+
+   
+    def view_points_link(self, obj):
+        
+        url = (
+            reverse("admin:mockapp_jobinfopoints_changelist")
+            + "?"
+            + urlencode({"job_info__id": f"{obj.id}"})
+        )
+        return format_html('<a href="{}"> Points</a>', url)
+
+    view_points_link.short_description = "Points"
+
+@admin.register(JobInfoPoints)
+class JobInfoPointsAdmin(admin.ModelAdmin):
+    list_display=['title','point_no']
+
 # Bihar Police test name  models here
 @admin.register(BiharPoliceTestName)
 class Bihar_Police_TestNameAdmin(admin.ModelAdmin):
