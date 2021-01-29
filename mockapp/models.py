@@ -182,6 +182,7 @@ class JobInfo(models.Model):
     month=models.ForeignKey(Month,on_delete=models.SET_NULL,null=True,blank=True)
     year=models.ForeignKey(Year,on_delete=models.SET_NULL,null=True,blank=True)
     info_no=models.IntegerField(null=True,blank=True)
+    keyword=models.CharField(max_length=120)
     title=models.CharField(max_length=200,blank=True,null=True)
     short_description=models.TextField(blank=True,null=True)
     category=models.ForeignKey(TestCategory,on_delete=models.SET_NULL,null=True,blank=True)
@@ -190,7 +191,7 @@ class JobInfo(models.Model):
 
     class Meta:
         ordering=['pub_date','title','short_description','category',
-        'cat_text','month','year','image','info_no'
+        'cat_text','month','year','image','info_no','keyword'
         ]
 
     def __str__(self):

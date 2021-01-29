@@ -71,7 +71,7 @@ class JobInfoSerializer(serializers.ModelSerializer):
         model=JobInfo
         fields =[
             'id','title','category','pub_date','short_description','cat_text'
-            ,'month','year','image','info_no'
+            ,'month','year','image','info_no','keyword'
         ]
 
 class JobInfoPointSerializer(serializers.ModelSerializer):
