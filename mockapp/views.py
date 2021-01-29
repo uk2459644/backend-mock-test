@@ -87,6 +87,19 @@ def bihar_police_questions_by_test_name(request, cid):
         serializer = Bihar_Police_QuestionSerializer(questionlist, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+# getting job info and points
+
+def job_info_list(request):
+    if request.method == 'GET':
+        jobinfo_list=JobInfo.objects.filter(show=True).order_by('info_no')
+        serializer=JobInfoSerializer(jobinfo_list,many=True)
+        return JsonResponse(serializer.data,safe=False)
+
+def job_point_list(request,cid):
+    if request.method == 'GET':
+        pointinfo_list=JobInfoPoints.objects.filter(job_info=cid,show=True).order_by('point_no')
+        serializer=JobInfoPointSerializer(pointinfo_list,many=True)
+        return JsonResponse(serializer.data,safe=False)
 # getting ssc cgl test name and questions list ordered by test number
 
 

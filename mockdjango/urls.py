@@ -31,6 +31,10 @@ urlpatterns = [
     # get categories list
      path('cat/',get_categories_list),
      path('preview/cat/',preview_get_categories_list),
+
+     # get job info and points list
+     path('jobs-info/',job_info_list),
+     path('jobs-points-list/',job_point_list),
      
 
     # privacy policy list , terms and faq

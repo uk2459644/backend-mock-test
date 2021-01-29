@@ -188,10 +188,11 @@ class JobInfo(models.Model):
     category=models.ForeignKey(TestCategory,on_delete=models.SET_NULL,null=True,blank=True)
     cat_text=models.CharField(max_length=150,help_text='Write category in text, which is choosen above.')
     image=models.TextField(null=True,blank=True)
+    show=models.BooleanField(default=True)
 
     class Meta:
         ordering=['pub_date','title','short_description','category',
-        'cat_text','month','year','image','info_no','keyword'
+        'cat_text','month','year','image','info_no','keyword','show'
         ]
 
     def __str__(self):
@@ -202,9 +203,10 @@ class JobInfoPoints(models.Model):
     job_info=models.ForeignKey(JobInfo,on_delete=models.CASCADE)
     title=models.CharField(max_length=150)
     description=models.TextField()
+    show=models.BooleanField(default=True)
 
     class Meta:
-        ordering=['point_no','job_info','title','description']
+        ordering=['point_no','job_info','title','description','show']
 
     def __str__(self):
         return self.title    

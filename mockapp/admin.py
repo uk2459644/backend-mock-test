@@ -77,7 +77,7 @@ class InformationAdmin(admin.ModelAdmin):
 class JobInfoAdmin(admin.ModelAdmin):
     list_display=['title','info_no','view_points_link']
     search_fields=['title']
-    list_filter=['year','month','category']
+    list_filter=['year','month','category','show']
 
    
     def view_points_link(self, obj):
