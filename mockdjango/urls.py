@@ -34,7 +34,7 @@ urlpatterns = [
 
      # get job info and points list
      path('jobs-info/',job_info_list),
-     path('jobs-points-list/',job_point_list),
+     path('jobs-points-list/<int:cid>/',job_point_list),
      
 
     # privacy policy list , terms and faq
