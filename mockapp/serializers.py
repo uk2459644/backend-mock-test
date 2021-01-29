@@ -77,7 +77,7 @@ class JobInfoSerializer(serializers.ModelSerializer):
 class JobInfoPointSerializer(serializers.ModelSerializer):
     class Meta:
         model=JobInfoPoints
-        fields=['id','point_info','job_info','title','description','show']
+        fields=['id','point_no','job_info','title','description','show']
 
 # Bihar police test name serializer
 

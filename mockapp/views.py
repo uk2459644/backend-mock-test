@@ -97,7 +97,7 @@ def job_info_list(request):
 
 def job_point_list(request,cid):
     if request.method == 'GET':
-        pointinfo_list=JobInfoPoints.objects.filter(job_info=cid,show=True).order_by('point_no')
+        pointinfo_list=JobInfoPoints.objects.filter(job_info=cid).order_by('point_no')
         serializer=JobInfoPointSerializer(pointinfo_list,many=True)
         return JsonResponse(serializer.data,safe=False)
 # getting ssc cgl test name and questions list ordered by test number
