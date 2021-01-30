@@ -204,9 +204,11 @@ class JobInfoPoints(models.Model):
     title=models.CharField(max_length=150)
     description=models.TextField()
     show=models.BooleanField(default=True)
+    image_show=models.BooleanField(default=False)
+    image_url=models.TextField(null=True,blank=True,help_text='Paste image url here.')
 
     class Meta:
-        ordering=['point_no','job_info','title','description','show']
+        ordering=['point_no','job_info','title','description','show','image_show','image_url']
 
     def __str__(self):
         return self.title    
