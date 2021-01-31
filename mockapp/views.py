@@ -87,6 +87,19 @@ def bihar_police_questions_by_test_name(request, cid):
         serializer = Bihar_Police_QuestionSerializer(questionlist, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+# getting article info and points
+def article_info_list(request):
+    if request.method == 'GET':
+        jobinfo_list=ArticleInfo.objects.filter(show=True).order_by('info_no')
+        serializer=ArticleInfoSerializer(jobinfo_list,many=True)
+        return JsonResponse(serializer.data,safe=False)
+
+def article_point_list(request,cid):
+    if request.method == 'GET':
+        pointinfo_list=ArticleInfoPoints.objects.filter(job_info=cid).order_by('point_no')
+        serializer=ArticleInfoPointSerializer(pointinfo_list,many=True)
+        return JsonResponse(serializer.data,safe=False)
+
 # getting job info and points
 
 def job_info_list(request):

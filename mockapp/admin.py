@@ -5,31 +5,35 @@ from django.utils.http import urlencode
 from django.utils.html import format_html
 
 
-
 # Register your models here.
 @admin.register(LanguageSelector)
 class LanguageAdmin(admin.ModelAdmin):
-    list_display=['lang_name','lang_no']
+    list_display = ['lang_name', 'lang_no']
+
 
 @admin.register(PrivacyPolicy)
 class PrivacyPolicyAdmin(admin.ModelAdmin):
-    list_display=['policy_no','policy_title']
-    list_filter=['policy_no','show']
+    list_display = ['policy_no', 'policy_title']
+    list_filter = ['policy_no', 'show']
+
 
 @admin.register(FAQ)
 class FaqAdmin(admin.ModelAdmin):
-    list_display=['faq_no','faq_question']
-    list_filter=['faq_no','show']
+    list_display = ['faq_no', 'faq_question']
+    list_filter = ['faq_no', 'show']
+
 
 @admin.register(FAQSSCChsl)
 class FaqSSCAdmin(admin.ModelAdmin):
-    list_display=['faq_no','faq_question']
-    list_filter=['faq_no','show']
+    list_display = ['faq_no', 'faq_question']
+    list_filter = ['faq_no', 'show']
+
 
 @admin.register(TermsCondition)
 class TermsConditionAdmin(admin.ModelAdmin):
-    list_display=['term_no','term_title']
-    list_filter=['term_no','show']    
+    list_display = ['term_no', 'term_title']
+    list_filter = ['term_no', 'show']
+
 
 @admin.register(PreviousYear)
 class PreviousYearAdmin(admin.ModelAdmin):
@@ -48,7 +52,7 @@ class MonthAdmin(admin.ModelAdmin):
 
 @admin.register(TestCategory)
 class TestCategoryAdmin(admin.ModelAdmin):
-    list_display = ['category','keyword','preview_keyword']
+    list_display = ['category', 'keyword', 'preview_keyword']
 
 
 @admin.register(Subject)
@@ -72,16 +76,17 @@ class InformationAdmin(admin.ModelAdmin):
     search_fields = ['month', 'info_title', 'meassage']
     list_filter = ['year', 'month']
 
-# Job Info and points models are here 
-@admin.register(JobInfo)
-class JobInfoAdmin(admin.ModelAdmin):
-    list_display=['title','info_no','view_points_link']
-    search_fields=['title']
-    list_filter=['year','month','category','show']
+# Article info models are here
 
-   
+
+@admin.register(ArticleInfo)
+class ArticleInfoAdmin(admin.ModelAdmin):
+    list_display = ['title', 'info_no', 'view_points_link']
+    search_fields = ['title']
+    list_filter = ['year', 'month', 'category', 'show']
+
     def view_points_link(self, obj):
-        
+
         url = (
             reverse("admin:mockapp_jobinfopoints_changelist")
             + "?"
@@ -91,22 +96,49 @@ class JobInfoAdmin(admin.ModelAdmin):
 
     view_points_link.short_description = "Points"
 
+
+@admin.register(ArticleInfoPoints)
+class ArticleInfoPointsAdmin(admin.ModelAdmin):
+    list_display = ['title', 'point_no']
+
+# Job Info and points models are here
+
+
+@admin.register(JobInfo)
+class JobInfoAdmin(admin.ModelAdmin):
+    list_display = ['title', 'info_no', 'view_points_link']
+    search_fields = ['title']
+    list_filter = ['year', 'month', 'category', 'show']
+
+    def view_points_link(self, obj):
+
+        url = (
+            reverse("admin:mockapp_jobinfopoints_changelist")
+            + "?"
+            + urlencode({"job_info__id": f"{obj.id}"})
+        )
+        return format_html('<a href="{}"> Points</a>', url)
+
+    view_points_link.short_description = "Points"
+
+
 @admin.register(JobInfoPoints)
 class JobInfoPointsAdmin(admin.ModelAdmin):
-    list_display=['title','point_no']
+    list_display = ['title', 'point_no']
 
 # Bihar Police test name  models here
+
+
 @admin.register(BiharPoliceTestName)
 class Bihar_Police_TestNameAdmin(admin.ModelAdmin):
-    list_display = ['test_name', 'category','view_question_link']
+    list_display = ['test_name', 'category', 'view_question_link']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test', 'month', 'year',
-                  'language',
+                   'language',
                    'is_previous_year_question', 'category']
 
-
     def view_question_link(self, obj):
-        
+
         url = (
             reverse("admin:mockapp_questionbiharpolice_changelist")
             + "?"
@@ -121,15 +153,14 @@ class Bihar_Police_TestNameAdmin(admin.ModelAdmin):
 
 @admin.register(RRBNtpcTestName)
 class RRB_NTPC_TestNameAdmin(admin.ModelAdmin):
-    list_display = ['test_name', 'category','view_question_link']
+    list_display = ['test_name', 'category', 'view_question_link']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test', 'month', 'year',
-                  'language',
+                   'language',
                    'is_previous_year_question', 'category']
 
-   
     def view_question_link(self, obj):
-        
+
         url = (
             reverse("admin:mockapp_questionrrbntpc_changelist")
             + "?"
@@ -137,20 +168,18 @@ class RRB_NTPC_TestNameAdmin(admin.ModelAdmin):
         )
         return format_html('<a href="{}"> Questions</a>', url)
 
-    view_question_link.short_description = "Questions"                
+    view_question_link.short_description = "Questions"
 
 
 @admin.register(RRBGroupDTestName)
 class RRB_GROUPD_TestNameAdmin(admin.ModelAdmin):
-    list_display = ['test_name', 'category','view_question_link']
+    list_display = ['test_name', 'category', 'view_question_link']
     search_fields = ['test_name', 'category', 'keyword']
-    list_filter = ['show_test'
-                    ,'language'
-                   , 'month', 'year',
+    list_filter = ['show_test', 'language', 'month', 'year',
                    'is_previous_year_question', 'category']
 
     def view_question_link(self, obj):
-        
+
         url = (
             reverse("admin:mockapp_questionrrbgroupd_changelist")
             + "?"
@@ -164,15 +193,15 @@ class RRB_GROUPD_TestNameAdmin(admin.ModelAdmin):
 
 @admin.register(PreviousYearRRBGroupDTestName)
 class PreviousYearRRB_GROUPD_TestNameAdmin(admin.ModelAdmin):
-    list_display = ['test_name', 'category','view_question_link']
+    list_display = ['test_name', 'category', 'view_question_link']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                  'language', 
-                  'month', 'year',
+                   'language',
+                   'month', 'year',
                    'is_previous_year_question', 'category']
- 
+
     def view_question_link(self, obj):
-        
+
         url = (
             reverse("admin:mockapp_previousyearquestionrrbgroupd_changelist")
             + "?"
@@ -181,6 +210,7 @@ class PreviousYearRRB_GROUPD_TestNameAdmin(admin.ModelAdmin):
         return format_html('<a href="{}"> Questions</a>', url)
 
     view_question_link.short_description = "Questions"
+
 
 @admin.register(PreviousYearRRBNtpcTestName)
 class PreviousYearRRB_NTPC_TestNameAdmin(admin.ModelAdmin):
@@ -197,15 +227,15 @@ class PreviousYearRRB_NTPC_TestNameAdmin(admin.ModelAdmin):
 
 @admin.register(SSCCGLTestName)
 class Ssc_Cgl_TestNameAdmin(admin.ModelAdmin):
-    list_display = ['test_name', 'category','view_question_link']
+    list_display = ['test_name', 'category', 'view_question_link']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                    'language',
-                     'month', 'year',
+                   'language',
+                   'month', 'year',
                    'is_previous_year_question', 'category']
 
     def view_question_link(self, obj):
-        
+
         url = (
             reverse("admin:mockapp_questionssccgl_changelist")
             + "?"
@@ -215,17 +245,18 @@ class Ssc_Cgl_TestNameAdmin(admin.ModelAdmin):
 
     view_question_link.short_description = "Questions"
 
+
 @admin.register(SSCCHSLTestName)
 class Ssc_Chsl_TestNameAdmin(admin.ModelAdmin):
-    list_display = ['test_name', 'category','view_question_link']
+    list_display = ['test_name', 'category', 'view_question_link']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                    'language',
-                     'month', 'year',
+                   'language',
+                   'month', 'year',
                    'is_previous_year_question', 'category']
 
     def view_question_link(self, obj):
-        
+
         url = (
             reverse("admin:mockapp_questionsscchsl_changelist")
             + "?"
@@ -235,13 +266,14 @@ class Ssc_Chsl_TestNameAdmin(admin.ModelAdmin):
 
     view_question_link.short_description = "Questions"
 
+
 @admin.register(SSCJEEETestName)
 class Ssc_Je_Ee_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                    'language',
-                     'month', 'year',
+                   'language',
+                   'month', 'year',
                    'is_previous_year_question', 'category']
 
 
@@ -250,8 +282,8 @@ class Ssc_Je_Ce_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                    'language',
-                    'month', 'year',
+                   'language',
+                   'month', 'year',
                    'is_previous_year_question', 'category']
 
 # Previous Year SSC TEST Name models registered here
@@ -262,8 +294,8 @@ class PreviousYearSsc_Je_Ce_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                     'language',
-                     'month', 'year',
+                   'language',
+                   'month', 'year',
                    'is_previous_year_question', 'category']
 
 
@@ -273,7 +305,7 @@ class PreviousYearSsc_Je_Ee_TestNameAdmin(admin.ModelAdmin):
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
                    'language',
-                    'month', 'year',
+                   'month', 'year',
                    'is_previous_year_question', 'category']
 
 
@@ -282,8 +314,8 @@ class PreviousYearSsc_Chsl_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                    'language',
-                     'month', 'year',
+                   'language',
+                   'month', 'year',
                    'is_previous_year_question', 'category']
 
 
@@ -292,128 +324,130 @@ class PreviousYearSsc_Cgl_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category']
     search_fields = ['test_name', 'category', 'keyword']
     list_filter = ['show_test',
-                    'language',
-                    'month', 'year',
+                   'language',
+                   'month', 'year',
                    'is_previous_year_question', 'category']
 
 # Bihar Police questions models here
+
+
 @admin.register(QuestionBiharPolice)
 class Bihar_Police_QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question_number','question', 'test_name',
-                    'category'  ]
+    list_display = ['question_number', 'question', 'test_name',
+                    'category']
     search_fields = ['question', 'test_name', 'category']
-    list_filter = ['year','subject', 'month', 'test_name', 'category']
-             
+    list_filter = ['year', 'subject', 'month', 'test_name', 'category']
+
 
 # SSC question models registered here
 
 
 @admin.register(QuestionSSCCGL)
 class SSC_CGL_QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question_number','question', 'test_name',
-                    'category'  ]
+    list_display = ['question_number', 'question', 'test_name',
+                    'category']
     search_fields = ['question', 'test_name', 'category']
-    list_filter = ['year','subject', 'month', 'test_name', 'category']
+    list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
 
 @admin.register(QuestionSSCCHSL)
 class SSC_CHSL_QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question_number','question', 'test_name',
-                    'category'  ]
+    list_display = ['question_number', 'question', 'test_name',
+                    'category']
     search_fields = ['question', 'test_name', 'category']
-    list_filter = ['year', 'subject','month', 'test_name', 'category']
+    list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
 
 @admin.register(QuestionSSCJEEE)
 class SSC_JE_EE_QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question_number','question', 'test_name',
-                    'category' ]
+    list_display = ['question_number', 'question', 'test_name',
+                    'category']
     search_fields = ['question', 'test_name', 'category']
-    list_filter = ['year','subject', 'month', 'test_name', 'category']
+    list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
 
 @admin.register(QuestionSSCJECE)
 class SSC_JE_CE_QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question_number','question', 'test_name',
+    list_display = ['question_number', 'question', 'test_name',
                     'category']
     search_fields = ['question', 'test_name', 'category']
-    list_filter = ['year','subject', 'month', 'test_name', 'category']
+    list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
 # Previous Year SSC Questions models registered here
 
 
 @admin.register(PreviousYearQuestionSSCJECE)
 class PreviousYearSSC_JE_CE_QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question_number','question', 'test_name',
+    list_display = ['question_number', 'question', 'test_name',
                     'category']
     search_fields = ['question', 'test_name', 'category']
-    list_filter = ['year','subject', 'month', 'test_name', 'category']
+    list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
 
 @admin.register(PreviousYearQuestionSSCJEEE)
 class PreviousYearSSC_JE_EE_QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question_number','question', 'test_name',
-                    'category' ]
+    list_display = ['question_number', 'question', 'test_name',
+                    'category']
     search_fields = ['question', 'test_name', 'category']
-    list_filter = ['year','subject', 'month', 'test_name', 'category']
+    list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
 
 @admin.register(PreviousYearQuestionSSCCHSL)
 class PreviousYearSSC_CHSL_QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question_number','question', 'test_name',
-                    'category' ]
+    list_display = ['question_number', 'question', 'test_name',
+                    'category']
     search_fields = ['question', 'test_name', 'category']
-    list_filter = ['year','subject', 'month', 'test_name', 'category']
+    list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
 
 @admin.register(PreviousYearQuestionSSCCGL)
 class PreviousYearSSC_CGL_QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question_number','question', 'test_name',
+    list_display = ['question_number', 'question', 'test_name',
                     'category']
     search_fields = ['question', 'test_name', 'category']
-    list_filter = ['year', 'month','subject', 'test_name', 'category']
+    list_filter = ['year', 'month', 'subject', 'test_name', 'category']
 
 
 # RRB Question models registered here
 
 @admin.register(QuestionRRBNtpc)
 class RRB_NTPC_QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question_number','question', 'test_name',
+    list_display = ['question_number', 'question', 'test_name',
                     'category']
     search_fields = ['question', 'test_name', 'category']
-    list_filter = ['year','subject', 'month', 'test_name', 'category']
-    change_links = ['test_name'] 
+    list_filter = ['year', 'subject', 'month', 'test_name', 'category']
+    change_links = ['test_name']
+
 
 @admin.register(QuestionRRBGroupD)
 class RRB_GROUPD_QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question_number','question', 'test_name',
-                    'category' ]
+    list_display = ['question_number', 'question', 'test_name',
+                    'category']
     search_fields = ['question', 'test_name', 'category']
-    list_filter = ['year','subject', 'month', 'test_name', 'category']
+    list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
 # Previous Year RRB Question models registered here
 
 
 @admin.register(PreviousYearQuestionRRBNtpc)
 class PreviousYearRRB_NTPC_QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question_number','question', 'test_name',
-                    'category' ]
+    list_display = ['question_number', 'question', 'test_name',
+                    'category']
     search_fields = ['question', 'test_name', 'category']
-    list_filter = ['year','subject', 'month', 'test_name', 'category']
+    list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
 
 @admin.register(PreviousYearQuestionRRBGroupD)
 class PreviousYearRRB_GROUPD_QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question_number','question', 'test_name',
-                    'category' ]
+    list_display = ['question_number', 'question', 'test_name',
+                    'category']
     search_fields = ['question', 'test_name', 'category']
-    list_filter = ['year','subject', 'month', 'test_name', 'category']
+    list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    list_display = ['question_number','question', 'test_name',
-                    'category' ]
+    list_display = ['question_number', 'question', 'test_name',
+                    'category']
     search_fields = ['question', 'test_name', 'category']
     list_filter = ['year', 'month', 'test_name', 'category']
-    
