@@ -35,10 +35,12 @@ urlpatterns = [
     # get article info points and list
     path('article-info/', article_info_list),
     path('article-points-list/<int:cid>/', article_point_list),
+     path('article-info/preview/', preview_article_info_list),
 
     # get job info and points list
     path('jobs-info/', job_info_list),
     path('jobs-points-list/<int:cid>/', job_point_list),
+     path('jobs-info/preview/', preview_job_info_list),
 
 
     # privacy policy list , terms and faq

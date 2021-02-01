@@ -94,6 +94,12 @@ def article_info_list(request):
         serializer=ArticleInfoSerializer(jobinfo_list,many=True)
         return JsonResponse(serializer.data,safe=False)
 
+def preview_article_info_list(request):
+    if request.method == 'GET':
+        jobinfo_list=ArticleInfo.objects.filter(show=False).order_by('info_no')
+        serializer=ArticleInfoSerializer(jobinfo_list,many=True)
+        return JsonResponse(serializer.data,safe=False)
+
 def article_point_list(request,cid):
     if request.method == 'GET':
         pointinfo_list=ArticleInfoPoints.objects.filter(job_info=cid).order_by('point_no')
@@ -105,6 +111,12 @@ def article_point_list(request,cid):
 def job_info_list(request):
     if request.method == 'GET':
         jobinfo_list=JobInfo.objects.filter(show=True).order_by('info_no')
+        serializer=JobInfoSerializer(jobinfo_list,many=True)
+        return JsonResponse(serializer.data,safe=False)
+
+def preview_job_info_list(request):
+    if request.method == 'GET':
+        jobinfo_list=JobInfo.objects.filter(show=False).order_by('info_no')
         serializer=JobInfoSerializer(jobinfo_list,many=True)
         return JsonResponse(serializer.data,safe=False)
 
