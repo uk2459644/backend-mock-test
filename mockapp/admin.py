@@ -128,7 +128,7 @@ class JobInfoAdmin(admin.ModelAdmin):
             qs = super().get_queryset(request)
             if request.user.is_superuser:
                 return qs
-            return qs.filter(author=request.user)
+            return qs.filter(request.user)
 
 @admin.register(JobInfoPoints)
 class JobInfoPointsAdmin(admin.ModelAdmin):
