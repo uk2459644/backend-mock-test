@@ -91,11 +91,18 @@ class ArticleInfoPointSerializer(serializers.ModelSerializer):
 
 
 # Job info and point serilizers
+class JobCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = JobCategory
+        fields = ['id', 'category', 'pub_date', 'edit_date', 'keyword', 'preview_keyword',
+                  'previous_year_keyword', 'preview_previous_year_keyword', 'show',
+                  'preview_show']
+
 class JobInfoSerializer(serializers.ModelSerializer):
     class Meta:
         model = JobInfo
         fields = [
-            'id', 'title', 'category', 'pub_date', 'short_description', 'cat_text', 'month', 'year', 'image', 'info_no', 'keyword', 'show'
+            'id', 'title', 'category', 'category_job','pub_date', 'short_description', 'cat_text', 'month', 'year', 'image', 'info_no', 'keyword', 'show'
         ]
 
 

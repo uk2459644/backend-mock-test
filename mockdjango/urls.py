@@ -14,16 +14,20 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from mockapp.views import *
 from django.conf import settings
 from django.conf.urls.static import static
+
 
 admin.site.site_header = 'Mock-Test'
 admin.site.site_title = 'Mock Test Admin'
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', show_question),
+     path('api-auth/', include('rest_framework.urls')),
+#     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+#     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     # get language list
     path('lang/', get_language_list),
@@ -35,12 +39,12 @@ urlpatterns = [
     # get article info points and list
     path('article-info/', article_info_list),
     path('article-points-list/<int:cid>/', article_point_list),
-     path('article-info/preview/', preview_article_info_list),
+    path('article-info/preview/', preview_article_info_list),
 
     # get job info and points list
     path('jobs-info/', job_info_list),
     path('jobs-points-list/<int:cid>/', job_point_list),
-     path('jobs-info/preview/', preview_job_info_list),
+    path('jobs-info/preview/', preview_job_info_list),
 
 
     # privacy policy list , terms and faq

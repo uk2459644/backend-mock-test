@@ -232,6 +232,28 @@ class ArticleInfoPoints(models.Model):
 
 # Job Info models are here
 
+class JobCategory(models.Model):
+    category = models.CharField(max_length=100)
+    pub_date = models.DateField(auto_now=True)
+    edit_date = models.DateField(auto_now=True)
+    keyword = models.CharField(max_length=150, default='')
+    previous_year_keyword = models.CharField(max_length=150, default='')
+    preview_keyword = models.CharField(max_length=150, default='')
+    preview_previous_year_keyword = models.CharField(
+        max_length=150, default='')
+    show = models.BooleanField(default=False)
+    preview_show = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ['category', 'keyword', 'preview_keyword', 'pub_date', 'edit_date',
+                    'previous_year_keyword', 'preview_previous_year_keyword', 'show',
+                    'preview_show'
+                    ]
+
+    def __str__(self):
+        return self.category
+
+
 
 class JobInfo(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -244,14 +266,16 @@ class JobInfo(models.Model):
     title = models.CharField(max_length=200, blank=True, null=True)
     short_description = models.TextField(blank=True, null=True)
     category = models.ForeignKey(
-        TestCategory, on_delete=models.SET_NULL, null=True, blank=True)
+        TestCategory, on_delete=models.SET_NULL, null=True, blank=True,default=1)
+    category_job = models.ForeignKey(
+        JobCategory, on_delete=models.SET_NULL, null=True, blank=True,default="")
     cat_text = models.CharField(
         max_length=150, help_text='Write category in text, which is choosen above.')
     image = models.TextField(null=True, blank=True)
     show = models.BooleanField(default=True)
 
     class Meta:
-        ordering = ['pub_date', 'title', 'short_description', 'category',
+        ordering = ['pub_date', 'title', 'short_description', 'category','category_job',
                     'cat_text', 'month', 'year', 'image', 'info_no', 'keyword', 'show'
                     ]
 

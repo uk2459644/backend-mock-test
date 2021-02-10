@@ -104,28 +104,37 @@ class ArticleInfoPointsAdmin(admin.ModelAdmin):
 # Job Info and points models are here
 
 
+@admin.register(JobCategory)
+class JobCategoryAdmin(admin.ModelAdmin):
+    list_display = ['category', 'keyword', 'preview_keyword']
+
+
 @admin.register(JobInfo)
 class JobInfoAdmin(admin.ModelAdmin):
-    list_display = ['title', 'info_no', 'view_points_link']
+    list_display = ['title', 'info_no']
     search_fields = ['title']
     list_filter = ['year', 'month', 'category', 'show']
 
-    def view_points_link(self, obj):
 
-        url = (
+    def view_points_link(self,obj):
+        url=(
             reverse("admin:mockapp_jobinfopoints_changelist")
-            + "?"
-            + urlencode({"job_info__id": f"{obj.id}"})
+            +"?"
+            +urlencode({"job_info__id":f"{obj.id}"})
         )
-        return format_html('<a href="{}"> Points</a>', url)
+        return format_html('<a href="{}">Points </a>',url)
 
-    view_points_link.short_description = "Points"
-
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(author=request.user)
 
 @admin.register(JobInfoPoints)
 class JobInfoPointsAdmin(admin.ModelAdmin):
     list_display = ['title', 'point_no']
 
+   
 # Bihar Police test name  models here
 
 
@@ -147,6 +156,13 @@ class Bihar_Police_TestNameAdmin(admin.ModelAdmin):
         return format_html('<a href="{}"> Questions</a>', url)
 
     view_question_link.short_description = "Questions"
+
+
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(author=request.user)
 
 # RRB Test name models registered here
 
@@ -170,6 +186,11 @@ class RRB_NTPC_TestNameAdmin(admin.ModelAdmin):
 
     view_question_link.short_description = "Questions"
 
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(author=request.user)
 
 @admin.register(RRBGroupDTestName)
 class RRB_GROUPD_TestNameAdmin(admin.ModelAdmin):
@@ -188,6 +209,12 @@ class RRB_GROUPD_TestNameAdmin(admin.ModelAdmin):
         return format_html('<a href="{}"> Questions</a>', url)
 
     view_question_link.short_description = "Questions"
+
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(author=request.user)    
 # Previous year RRB Test name models registered here
 
 
@@ -245,6 +272,11 @@ class Ssc_Cgl_TestNameAdmin(admin.ModelAdmin):
 
     view_question_link.short_description = "Questions"
 
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(author=request.user)
 
 @admin.register(SSCCHSLTestName)
 class Ssc_Chsl_TestNameAdmin(admin.ModelAdmin):
@@ -266,6 +298,11 @@ class Ssc_Chsl_TestNameAdmin(admin.ModelAdmin):
 
     view_question_link.short_description = "Questions"
 
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(author=request.user)
 
 @admin.register(SSCJEEETestName)
 class Ssc_Je_Ee_TestNameAdmin(admin.ModelAdmin):
@@ -338,6 +375,12 @@ class Bihar_Police_QuestionAdmin(admin.ModelAdmin):
     search_fields = ['question', 'test_name', 'category']
     list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
+
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(author=request.user)
 
 # SSC question models registered here
 
