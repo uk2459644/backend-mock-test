@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -256,6 +257,7 @@ class JobCategory(models.Model):
 
 
 class JobInfo(models.Model):
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
     pub_date = models.DateTimeField(auto_now_add=True)
     month = models.ForeignKey(
         Month, on_delete=models.SET_NULL, null=True, blank=True)
@@ -277,7 +279,7 @@ class JobInfo(models.Model):
     class Meta:
         ordering = ['pub_date', 'title', 'short_description', 'category','category_job',
                     'cat_text', 'month', 'year', 'image', 'info_no', 'keyword', 'show'
-                    ]
+                    ,'user']
 
     def __str__(self):
         return self.title
@@ -304,6 +306,7 @@ class JobInfoPoints(models.Model):
 
 
 class BiharPoliceTestName(models.Model):
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
     language = models.ForeignKey(
         LanguageSelector, on_delete=models.CASCADE, null=True, blank=True, default='')
     test_number = models.IntegerField(null=True, blank=True)
@@ -321,7 +324,7 @@ class BiharPoliceTestName(models.Model):
         default=60, help_text='test time in minutes')
 
     class Meta:
-        ordering = ['test_number', 'year', 'month', 'show_test',
+        ordering = ['test_number', 'year', 'month', 'show_test','user',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
@@ -336,6 +339,7 @@ class BiharPoliceTestName(models.Model):
 
 
 class RRBGroupDTestName(models.Model):
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
     language = models.ForeignKey(
         LanguageSelector, on_delete=models.CASCADE, null=True, blank=True, default='')
     test_number = models.IntegerField(null=True, blank=True)
@@ -353,7 +357,7 @@ class RRBGroupDTestName(models.Model):
         default=60, help_text='test time in minutes')
 
     class Meta:
-        ordering = ['test_number', 'year', 'month', 'show_test',
+        ordering = ['test_number', 'year', 'month', 'show_test','user',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
@@ -364,6 +368,7 @@ class RRBGroupDTestName(models.Model):
 
 
 class RRBNtpcTestName(models.Model):
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
     language = models.ForeignKey(
         LanguageSelector, on_delete=models.CASCADE, null=True, blank=True, default='')
     test_number = models.IntegerField(null=True, blank=True)
@@ -381,7 +386,7 @@ class RRBNtpcTestName(models.Model):
         default=60, help_text='test time in minutes')
 
     class Meta:
-        ordering = ['test_number', 'year', 'month', 'show_test',
+        ordering = ['test_number', 'year', 'month', 'show_test','user',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
@@ -453,6 +458,7 @@ class PreviousYearRRBNtpcTestName(models.Model):
 
 
 class SscJeCeTestName(models.Model):
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
     language = models.ForeignKey(
         LanguageSelector, on_delete=models.CASCADE, null=True, blank=True, default='')
     test_number = models.IntegerField(null=True, blank=True)
@@ -470,7 +476,7 @@ class SscJeCeTestName(models.Model):
         default=60, help_text='test time in minutes')
 
     class Meta:
-        ordering = ['test_number', 'year', 'month', 'show_test',
+        ordering = ['test_number', 'year', 'month', 'show_test','user',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
@@ -481,6 +487,7 @@ class SscJeCeTestName(models.Model):
 
 
 class SSCJEEETestName(models.Model):
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
     language = models.ForeignKey(
         LanguageSelector, on_delete=models.CASCADE, null=True, blank=True, default='')
     test_number = models.IntegerField(null=True, blank=True)
@@ -498,7 +505,7 @@ class SSCJEEETestName(models.Model):
         default=60, help_text='test time in minutes')
 
     class Meta:
-        ordering = ['test_number', 'year', 'month', 'show_test',
+        ordering = ['test_number', 'year', 'month', 'show_test','user',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
@@ -509,6 +516,7 @@ class SSCJEEETestName(models.Model):
 
 
 class SSCCHSLTestName(models.Model):
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
     language = models.ForeignKey(
         LanguageSelector, on_delete=models.CASCADE, null=True, blank=True, default='')
     test_number = models.IntegerField(null=True, blank=True)
@@ -526,7 +534,7 @@ class SSCCHSLTestName(models.Model):
         default=60, help_text='test time in minutes')
 
     class Meta:
-        ordering = ['test_number', 'year', 'month', 'show_test',
+        ordering = ['test_number', 'year', 'month', 'show_test','user',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',
@@ -537,6 +545,7 @@ class SSCCHSLTestName(models.Model):
 
 
 class SSCCGLTestName(models.Model):
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
     language = models.ForeignKey(
         LanguageSelector, on_delete=models.CASCADE, null=True, blank=True, default='')
     test_number = models.IntegerField(null=True, blank=True)
@@ -554,7 +563,7 @@ class SSCCGLTestName(models.Model):
         default=60, help_text='test time in minutes')
 
     class Meta:
-        ordering = ['test_number', 'year', 'month', 'show_test',
+        ordering = ['test_number', 'year', 'month', 'show_test','user',
                     'is_previous_year_question',
                     'total_no_of_question',
                     'language',

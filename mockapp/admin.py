@@ -8,16 +8,18 @@ from django.utils.html import format_html
 # Register your models here.
 @admin.register(LanguageSelector)
 class LanguageAdmin(admin.ModelAdmin):
-    list_display = ['lang_name', 'lang_no','view_ids_link']
+    list_display = ['lang_name','view_ids_link']
+    readonly_fields = ['id']
 
     def view_ids_link(self, obj):
 
-        url = (
-        urlencode({"languageselector__id": f"{obj.id}"})
-        )
-        return format_html('<a href="{}"> Ids</a>', url)
+        # url = (
+        # urlencode({"languageselector__id": f"{obj.id}"})
+        # )
+        return obj.id
 
     view_ids_link.short_description = "Id"
+
 
 @admin.register(PrivacyPolicy)
 class PrivacyPolicyAdmin(admin.ModelAdmin):
@@ -58,7 +60,7 @@ class YearAdmin(admin.ModelAdmin):
         url = (
         urlencode({"year__id": f"{obj.id}"})
         )
-        return format_html('<a href="{}"> Ids</a>', url)
+        return obj.id
 
     view_ids_link.short_description = "Id"
 
@@ -72,7 +74,7 @@ class MonthAdmin(admin.ModelAdmin):
         url = (
         urlencode({"month__id": f"{obj.id}"})
         )
-        return format_html('<a href="{}"> Ids</a>', url)
+        return obj.id
 
     view_ids_link.short_description = "Id"
 
@@ -85,7 +87,7 @@ class TestCategoryAdmin(admin.ModelAdmin):
         url = (
         urlencode({"testcategory__id": f"{obj.id}"})
         )
-        return format_html('<a href="{}"> Ids</a>', url)
+        return obj.id
 
     view_ids_link.short_description = "Id"
 
@@ -100,7 +102,7 @@ class SubjectAdmin(admin.ModelAdmin):
         url = (
         urlencode({"subject__id": f"{obj.id}"})
         )
-        return format_html('<a href="{}"> Ids</a>', url)
+        return obj.id
 
     view_ids_link.short_description = "Id"
 
@@ -193,7 +195,7 @@ class Bihar_Police_TestNameAdmin(admin.ModelAdmin):
         url = (
         urlencode({"biharpolicetestname__id": f"{obj.id}"})
         )
-        return format_html('<a href="{}"> Ids</a>', url)
+        return obj.id
 
     view_ids_link.short_description = "Id"
 
@@ -228,7 +230,7 @@ class RRB_NTPC_TestNameAdmin(admin.ModelAdmin):
         url = (
         urlencode({"rrbntpctestname__id": f"{obj.id}"})
         )
-        return format_html('<a href="{}"> Ids</a>', url)
+        return obj.id
 
     view_ids_link.short_description = "Id"
 
@@ -256,7 +258,7 @@ class RRB_GROUPD_TestNameAdmin(admin.ModelAdmin):
         url = (
         urlencode({"rrbgroupdtestname__id": f"{obj.id}"})
         )
-        return format_html('<a href="{}"> Ids</a>', url)
+        return obj.id
 
     view_ids_link.short_description = "Id"
 
@@ -323,7 +325,7 @@ class Ssc_Cgl_TestNameAdmin(admin.ModelAdmin):
         url = (
         urlencode({"ssccgltestname__id": f"{obj.id}"})
         )
-        return format_html('<a href="{}"> Ids</a>', url)
+        return obj.id
 
     view_ids_link.short_description = "Id"
 
@@ -354,7 +356,7 @@ class Ssc_Chsl_TestNameAdmin(admin.ModelAdmin):
         url = (
         urlencode({"sscchsltestname__id": f"{obj.id}"})
         )
-        return format_html('<a href="{}"> Ids</a>', url)
+        return obj.id
 
     view_ids_link.short_description = "Id"
 
@@ -386,7 +388,7 @@ class Ssc_Je_Ee_TestNameAdmin(admin.ModelAdmin):
         url = (
         urlencode({"sscjeeetestname__id": f"{obj.id}"})
         )
-        return format_html('<a href="{}"> Ids</a>', url)
+        return obj.id
 
     view_ids_link.short_description = "Id"
 
@@ -404,7 +406,7 @@ class Ssc_Je_Ce_TestNameAdmin(admin.ModelAdmin):
         url = (
         urlencode({"sscjecetestname__id": f"{obj.id}"})
         )
-        return format_html('<a href="{}"> Ids</a>', url)
+        return obj.id
 
     view_ids_link.short_description = "Id"
 # Previous Year SSC TEST Name models registered here
