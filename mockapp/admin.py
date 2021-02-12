@@ -210,6 +210,11 @@ class Bihar_Police_TestNameAdmin(admin.ModelAdmin):
 
     view_question_link.short_description = "Questions"
 
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(user=request.user)
 
    
 
@@ -245,6 +250,11 @@ class RRB_NTPC_TestNameAdmin(admin.ModelAdmin):
 
     view_question_link.short_description = "Questions"
 
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(user=request.user)
    
 @admin.register(RRBGroupDTestName)
 class RRB_GROUPD_TestNameAdmin(admin.ModelAdmin):
@@ -273,6 +283,11 @@ class RRB_GROUPD_TestNameAdmin(admin.ModelAdmin):
 
     view_question_link.short_description = "Questions"
 
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(user=request.user)
       
 # Previous year RRB Test name models registered here
 
@@ -340,6 +355,11 @@ class Ssc_Cgl_TestNameAdmin(admin.ModelAdmin):
 
     view_question_link.short_description = "Questions"
 
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(user==request.user)
     
 
 @admin.register(SSCCHSLTestName)
@@ -371,6 +391,11 @@ class Ssc_Chsl_TestNameAdmin(admin.ModelAdmin):
 
     view_question_link.short_description = "Questions"
 
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(user=request.user)
    
 
 @admin.register(SSCJEEETestName)
@@ -392,6 +417,13 @@ class Ssc_Je_Ee_TestNameAdmin(admin.ModelAdmin):
 
     view_ids_link.short_description = "Id"
 
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(user=request.user)
+
+
 @admin.register(SscJeCeTestName)
 class Ssc_Je_Ce_TestNameAdmin(admin.ModelAdmin):
     list_display = ['test_name', 'category','view_ids_link']
@@ -409,6 +441,12 @@ class Ssc_Je_Ce_TestNameAdmin(admin.ModelAdmin):
         return obj.id
 
     view_ids_link.short_description = "Id"
+
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(user=request.user)    
 # Previous Year SSC TEST Name models registered here
 
 
