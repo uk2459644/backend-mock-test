@@ -3,9 +3,28 @@ from .models import *
 from django.urls import reverse
 from django.utils.http import urlencode
 from django.utils.html import format_html
+from django.contrib.auth.models import User
+from django.contrib.auth.admin import UserAdmin
+
+# Unregister the provided model admin
+admin.site.unregister(User)
+
+# Register out own model admin, based on the default UserAdmin
+@admin.register(User)
+class CustomUserAdmin(UserAdmin):
+    list_display=['username','email','view_ids_link']
 
 
+    def view_ids_link(self, obj):
+
+        url = (
+        urlencode({"year__id": f"{obj.id}"})
+        )
+        return obj.id
+
+    view_ids_link.short_description = "Id"
 # Register your models here.
+
 @admin.register(LanguageSelector)
 class LanguageAdmin(admin.ModelAdmin):
     list_display = ['lang_name','view_ids_link']
@@ -359,7 +378,7 @@ class Ssc_Cgl_TestNameAdmin(admin.ModelAdmin):
             qs = super().get_queryset(request)
             if request.user.is_superuser:
                 return qs
-            return qs.filter(user==request.user)
+            return qs.filter(user=request.user)
     
 
 @admin.register(SSCCHSLTestName)
