@@ -81,8 +81,7 @@ def preview_previous__year_bihar_police_testlist(request):
             is_previous_year_question=True,show_test=False).order_by('test_number')
         serializer = Bihar_Police_TestNameSerializer(testlist, many=True)
         return JsonResponse(serializer.data, safe=False)
-
-@api_view(['GET', 'POST'])        
+     
 def bihar_police_questions_by_test_name(request, cid):
     if request.method == 'GET':
         questionlist = QuestionBiharPolice.objects.filter(
