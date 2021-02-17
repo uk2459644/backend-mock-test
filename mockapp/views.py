@@ -2,6 +2,9 @@ from django.shortcuts import render
 from .models import *
 from .serializers import *
 from django.http import HttpResponse, JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework.parsers import JSONParser
+from rest_framework import status
 
 # Create your views here.
 
@@ -79,13 +82,21 @@ def preview_previous__year_bihar_police_testlist(request):
         serializer = Bihar_Police_TestNameSerializer(testlist, many=True)
         return JsonResponse(serializer.data, safe=False)
 
-         
+@api_view(['GET', 'POST'])        
 def bihar_police_questions_by_test_name(request, cid):
     if request.method == 'GET':
         questionlist = QuestionBiharPolice.objects.filter(
             test_name=cid).order_by('question_number')
         serializer = Bihar_Police_QuestionSerializer(questionlist, many=True)
         return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        q_data=JSONParser().parse(request)
+        q_serializer=Bihar_Police_QuestionSerializer(data=q_data)
+        if q_serializer.is_valid():
+            q_serializer.save()
+            return JsonResponse(q_serializer.data,status=status.HTTP_201_CREATED)
+        return JsonResponse(q_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 # getting article info and points
 def article_info_list(request):
@@ -168,12 +179,14 @@ def ssc_cgl_questions_by_test_name(request, cid):
         serializer = SSC_CGL_QuestionSerializer(questionlist, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+@api_view(['GET', 'POST', 'DELETE'])
 def previous_year_ssc_cgl_questions_by_test_name(request, cid):
     if request.method == 'GET':
         questionlist = PreviousYearQuestionSSCCGL.objects.filter(
             test_name=cid).order_by('question_number')
         serializer = PreviousYearSSC_CGL_QuestionSerializer(questionlist, many=True)
         return JsonResponse(serializer.data, safe=False)
+
 
 
 # getting ssc chsl test name and questions list ordered by test number
