@@ -513,6 +513,28 @@ class PreviousYearSsc_Cgl_TestNameAdmin(admin.ModelAdmin):
 
 @admin.register(QuestionBiharPolice)
 class Bihar_Police_QuestionAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+            "fields": (
+                'question_number','question','a','b','c','d','correct_opt','correct_text'
+            ),
+           
+        }),
+         ("Scroll options",{
+                'classes':('collapse',),
+                'fields':('test_name',('category','subject'),('month','year'))
+            }),
+        ("True/False options",{
+                'classes':('collapse',),
+                'fields':(('comprehension_show','comprehension_doc'),('show','question_doc'),'doc')
+            }),
+        ("Comprehension and marks",{
+            'classes':('collapse',),
+            'fields':('comprehension',('correct_mark','negative_mark'))
+        })
+    )
+    
+    
     list_display = ['question_number', 'question', 'test_name',
                     'category']
     search_fields = ['question', 'test_name', 'category']
@@ -526,6 +548,26 @@ class Bihar_Police_QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(QuestionSSCCGL)
 class SSC_CGL_QuestionAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+           "fields": (
+                'question_number','question','a','b','c','d','correct_opt','correct_text'
+            ),
+        }),
+        ("Scroll options",{
+                'classes':('collapse',),
+                'fields':('test_name',('category','subject'),('month','year'))
+            }),
+        ("True/False options",{
+                'classes':('collapse',),
+                'fields':(('comprehension_show','comprehension_doc'),('show','question_doc'),'doc')
+            }),
+        ("Comprehension and marks",{
+            'classes':('collapse',),
+            'fields':('comprehension',('correct_mark','negative_mark'))
+        })
+    )
+    
     list_display = ['question_number', 'question', 'test_name',
                     'category']
     search_fields = ['question', 'test_name', 'category']
@@ -534,6 +576,26 @@ class SSC_CGL_QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(QuestionSSCCHSL)
 class SSC_CHSL_QuestionAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+           "fields": (
+                'question_number','question','a','b','c','d','correct_opt','correct_text'
+            ),
+        }),
+        ("Scroll options",{
+                'classes':('collapse',),
+                'fields':('test_name',('category','subject'),('month','year'))
+            }),
+        ("True/False options",{
+                'classes':('collapse',),
+                'fields':(('comprehension_show','comprehension_doc'),('show','question_doc'),'doc')
+            }),
+        ("Comprehension and marks",{
+            'classes':('collapse',),
+            'fields':('comprehension',('correct_mark','negative_mark'))
+        })
+    )
+    
     list_display = ['question_number', 'question', 'test_name',
                     'category']
     search_fields = ['question', 'test_name', 'category']
@@ -542,6 +604,26 @@ class SSC_CHSL_QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(QuestionSSCJEEE)
 class SSC_JE_EE_QuestionAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+           "fields": (
+                'question_number','question','a','b','c','d','correct_opt','correct_text'
+            ),
+        }),
+        ("Scroll options",{
+                'classes':('collapse',),
+                'fields':('test_name',('category','subject'),('month','year'))
+            }),
+        ("True/False options",{
+                'classes':('collapse',),
+                'fields':(('comprehension_show','comprehension_doc'),('show','question_doc'),'doc')
+            }),
+        ("Comprehension and marks",{
+            'classes':('collapse',),
+            'fields':('comprehension',('correct_mark','negative_mark'))
+        })
+    )
+    
     list_display = ['question_number', 'question', 'test_name',
                     'category']
     search_fields = ['question', 'test_name', 'category']
@@ -550,6 +632,26 @@ class SSC_JE_EE_QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(QuestionSSCJECE)
 class SSC_JE_CE_QuestionAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+           "fields": (
+                'question_number','question','a','b','c','d','correct_opt','correct_text'
+            ),
+        }),
+        ("Scroll options",{
+                'classes':('collapse',),
+                'fields':('test_name',('category','subject'),('month','year'))
+            }),
+        ("True/False options",{
+                'classes':('collapse',),
+                'fields':(('comprehension_show','comprehension_doc'),('show','question_doc'),'doc')
+            }),
+        ("Comprehension and marks",{
+            'classes':('collapse',),
+            'fields':('comprehension',('correct_mark','negative_mark'))
+        })
+    )
+    
     list_display = ['question_number', 'question', 'test_name',
                     'category']
     search_fields = ['question', 'test_name', 'category']
@@ -594,6 +696,26 @@ class PreviousYearSSC_CGL_QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(QuestionRRBNtpc)
 class RRB_NTPC_QuestionAdmin(admin.ModelAdmin):
+    fieldsets = (
+       (None, {
+           "fields": (
+                'question_number','question','a','b','c','d','correct_opt','correct_text'
+            ),
+        }),
+        ("Scroll options",{
+                'classes':('collapse',),
+                'fields':('test_name',('category','subject'),('month','year'))
+            }),
+        ("True/False options",{
+                'classes':('collapse',),
+                'fields':(('comprehension_show','comprehension_doc'),('show','question_doc'),'doc')
+            }),
+        ("Comprehension and marks",{
+            'classes':('collapse',),
+            'fields':('comprehension',('correct_mark','negative_mark'))
+        })
+    )
+    
     list_display = ['question_number', 'question', 'test_name',
                     'category']
     search_fields = ['question', 'test_name', 'category']
@@ -603,6 +725,26 @@ class RRB_NTPC_QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(QuestionRRBGroupD)
 class RRB_GROUPD_QuestionAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+           "fields": (
+                'question_number','question','a','b','c','d','correct_opt','correct_text'
+            ),
+        }),
+        ("Scroll options",{
+                'classes':('collapse',),
+                'fields':('test_name',('category','subject'),('month','year'))
+            }),
+        ("True/False options",{
+                'classes':('collapse',),
+                'fields':(('comprehension_show','comprehension_doc'),('show','question_doc'),'doc')
+            }),
+        ("Comprehension and marks",{
+            'classes':('collapse',),
+            'fields':('comprehension',('correct_mark','negative_mark'))
+        })
+    )
+    
     list_display = ['question_number', 'question', 'test_name',
                     'category']
     search_fields = ['question', 'test_name', 'category']
@@ -613,6 +755,14 @@ class RRB_GROUPD_QuestionAdmin(admin.ModelAdmin):
 
 @admin.register(PreviousYearQuestionRRBNtpc)
 class PreviousYearRRB_NTPC_QuestionAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+            "fields": (
+                
+            ),
+        }),
+    )
+    
     list_display = ['question_number', 'question', 'test_name',
                     'category']
     search_fields = ['question', 'test_name', 'category']

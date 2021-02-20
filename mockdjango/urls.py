@@ -18,16 +18,25 @@ from django.urls import path, include
 from mockapp.views import *
 from django.conf import settings
 from django.conf.urls.static import static
-
+from rest_framework_simplejwt import views as jwt_views
 
 admin.site.site_header = 'Mock-Test'
 admin.site.site_title = 'Mock Test Admin'
 urlpatterns = [
+
     path('admin/', admin.site.urls),
     path('', show_question),
-     path('api-auth/', include('rest_framework.urls')),
-#     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-#     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
+    #api authorization url
+    path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+    
+    # fron end customization
+    path('index', index),
+
+    path('api-auth/', include('rest_framework.urls')),
+    #     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    #     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     # get language list
     path('lang/', get_language_list),

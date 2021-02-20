@@ -1,12 +1,62 @@
 from django.shortcuts import render
 from .models import *
 from .serializers import *
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse,HttpResponseRedirect
 from rest_framework.decorators import api_view
 from rest_framework.parsers import JSONParser
 from rest_framework import status
+from django.shortcuts import render
+from .forms import Question_Essential
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
+def index(request):
+
+    if request.method == 'POST':
+        form=Question_Essential(request.POST)
+        if form.is_valid():
+            subject = form.cleaned_data['subject']
+            test_name=form.cleaned_data['test_name']
+            month=form.cleaned_data['month']
+            year=form.cleaned_data['year']
+            category=form.cleaned_data['category']
+            correct_mark=form.cleaned_data['correct_mark']
+            negative_mark=form.cleaned_data['negative_mark']
+
+            # q_model= QuestionBiharPolice(
+            #     test_name= int(13),
+            #     category= 7,
+            #     subject= 1,
+            #     month= 8,
+            #     comprehension_show= False,
+            #     comprehension_doc= False,
+            #     question_doc= False,
+            #     doc= False,
+            #     comprehension= "s",
+            #     year= 1,
+            #     show= True,
+            #     question= "s",
+            #     a= "s",
+            #     b= "s",
+            #     c= "s",
+            #     d= "s",
+            #     correct_opt= "s",
+            #     question_number= 14,
+            #     correct_mark= 1.0,
+            #     correct_text= "s",
+            #     negative_mark= 0.0
+            #        )
+             
+            print(request.POST)
+          #  q_model.save()
+        return HttpResponseRedirect('/')
+            
+    
+    else:
+        form=Question_Essential()
+    
+    return render(request,'index.html',{'form':form})
+
 
 # getting language list 
 def get_language_list(request):
@@ -81,7 +131,7 @@ def preview_previous__year_bihar_police_testlist(request):
             is_previous_year_question=True,show_test=False).order_by('test_number')
         serializer = Bihar_Police_TestNameSerializer(testlist, many=True)
         return JsonResponse(serializer.data, safe=False)
-     
+@csrf_exempt   
 def bihar_police_questions_by_test_name(request, cid):
     if request.method == 'GET':
         questionlist = QuestionBiharPolice.objects.filter(
@@ -170,13 +220,21 @@ def preview_ssc_cgl_testlist_previous_year(request):
         serializer = PreviousYearSSC_CGL_TestNameSerializer(testlist, many=True)
         return JsonResponse(serializer.data, safe=False)
 
-
+@csrf_exempt 
 def ssc_cgl_questions_by_test_name(request, cid):
     if request.method == 'GET':
         questionlist = QuestionSSCCGL.objects.filter(
             test_name=cid).order_by('question_number')
         serializer = SSC_CGL_QuestionSerializer(questionlist, many=True)
         return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        q_data=JSONParser().parse(request)
+        q_serializer=SSC_CGL_QuestionSerializer(data=q_data)
+        if q_serializer.is_valid():
+            q_serializer.save()
+            return JsonResponse(q_serializer.data,status=status.HTTP_201_CREATED)
+        return JsonResponse(q_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'POST', 'DELETE'])
 def previous_year_ssc_cgl_questions_by_test_name(request, cid):
@@ -223,12 +281,21 @@ def preview_ssc_chsl_testlist_previous_year(request):
         serializer =PreviousYearSSC_CHSL_TestNameSerializer(testlist, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+@csrf_exempt 
 def ssc_chsl_questions_by_test_name(request, cid):
     if request.method == 'GET':
         questionlist = QuestionSSCCHSL.objects.filter(
             test_name=cid).order_by('question_number')
         serializer = SSC_CHSL_QuestionSerializer(questionlist, many=True)
         return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        q_data=JSONParser().parse(request)
+        q_serializer=SSC_CHSL_QuestionSerializer(data=q_data)
+        if q_serializer.is_valid():
+            q_serializer.save()
+            return JsonResponse(q_serializer.data,status=status.HTTP_201_CREATED)
+        return JsonResponse(q_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 def previous_year_ssc_chsl_questions_by_test_name(request, cid):
     if request.method == 'GET':
@@ -272,7 +339,7 @@ def preview_ssc_je_ee_testlist_previous_year(request):
         serializer = PreviousYearSSC_JE_EE_TestNameSerializer(testlist, many=True)
         return JsonResponse(serializer.data, safe=False)
 
-
+@csrf_exempt 
 def ssc_je_ee_questions_by_test_name(request, cid):
     if request.method == 'GET':
         questionlist = QuestionSSCJEEE.objects.filter(
@@ -322,7 +389,7 @@ def preview_ssc_je_ce_testlist_previous_year(request):
         serializer = PreviousYearSSC_JE_CE_TestNameSerializer(testlist, many=True)
         return JsonResponse(serializer.data, safe=False)
 
-
+@csrf_exempt 
 def ssc_je_ce_questions_by_test_name(request, cid):
     if request.method == 'GET':
         questionlist = QuestionSSCJECE.objects.filter(
@@ -374,6 +441,7 @@ def preview_rrb_ntpc_testlist_previous_year(request):
 
         return JsonResponse(serializer.data, safe=False)
 
+@csrf_exempt 
 def rrb_ntpc_questions_by_test_name(request, cid):
 
     if request.method == 'GET':
@@ -382,6 +450,14 @@ def rrb_ntpc_questions_by_test_name(request, cid):
         serializer = RRB_NTPC_QuestionSerializer(questionlist, many=True)
 
         return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        q_data=JSONParser().parse(request)
+        q_serializer=RRB_NTPC_QuestionSerializer(data=q_data)
+        if q_serializer.is_valid():
+            q_serializer.save()
+            return JsonResponse(q_serializer.data,status=status.HTTP_201_CREATED)
+        return JsonResponse(q_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 def previous_year_rrb_ntpc_questions_by_test_name(request, cid):
 
@@ -425,6 +501,7 @@ def preview_rrb_groupd_testlist_previous_year(request):
         serializer = PreviousYearRRB_GROUPD_TestNameSerializer(testlist, many=True)
         return JsonResponse(serializer.data, safe=False)
 
+@csrf_exempt 
 def rrb_groupd_questions_by_test_name(request, cid):
     if request.method == 'GET':
         questionlist = QuestionRRBGroupD.objects.filter(
@@ -432,6 +509,14 @@ def rrb_groupd_questions_by_test_name(request, cid):
         serializer = RRB_GROUPD_QuestionSerializer(questionlist, many=True)
 
         return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        q_data=JSONParser().parse(request)
+        q_serializer=RRB_GROUPD_QuestionSerializer(data=q_data)
+        if q_serializer.is_valid():
+            q_serializer.save()
+            return JsonResponse(q_serializer.data,status=status.HTTP_201_CREATED)
+        return JsonResponse(q_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
 def previous_year_rrb_groupd_questions_by_test_name(request, cid):
     if request.method == 'GET':

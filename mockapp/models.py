@@ -11,6 +11,7 @@ class FAQSSCChsl(models.Model):
     faq_question = models.CharField(max_length=150, help_text='FAQ Question')
     faq_answer = models.TextField(help_text='Answer here .')
     show = models.BooleanField(default=False)
+    
 
     class Meta:
         ordering = ['faq_no', 'faq_question', 'faq_answer', 'show']
