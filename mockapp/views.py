@@ -146,6 +146,15 @@ def bihar_police_questions_by_test_name(request, cid):
             q_serializer.save()
             return JsonResponse(q_serializer.data,status=status.HTTP_201_CREATED)
         return JsonResponse(q_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+        
+    elif request.method == 'PUT':
+        obj=QuestionBiharPolice.objects.get(pk=cid)
+        q_data=JSONParser().parse(request)
+        q_serializer=Bihar_Police_QuestionSerializer(obj,data=q_data,partial=True)
+        if q_serializer.is_valid():
+            q_serializer.save()
+            return JsonResponse(q_serializer.data,status=status.HTTP_206_PARTIAL_CONTENT)
+        return JsonResponse(q_serializer.errors,status.HTTP_400_BAD_REQUEST) 
 
 # getting article info and points
 def article_info_list(request):
@@ -235,6 +244,15 @@ def ssc_cgl_questions_by_test_name(request, cid):
             q_serializer.save()
             return JsonResponse(q_serializer.data,status=status.HTTP_201_CREATED)
         return JsonResponse(q_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+       
+    elif request.method == 'PUT':
+        obj=QuestionSSCCGL.objects.get(pk=cid)
+        q_data=JSONParser().parse(request)
+        q_serializer=SSC_CGL_QuestionSerializer(obj,data=q_data,partial=True)
+        if q_serializer.is_valid():
+            q_serializer.save()
+            return JsonResponse(q_serializer.data,status=status.HTTP_206_PARTIAL_CONTENT)
+        return JsonResponse(q_serializer.errors,status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'POST', 'DELETE'])
 def previous_year_ssc_cgl_questions_by_test_name(request, cid):
@@ -297,6 +315,16 @@ def ssc_chsl_questions_by_test_name(request, cid):
             return JsonResponse(q_serializer.data,status=status.HTTP_201_CREATED)
         return JsonResponse(q_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
 
+    elif request.method == 'PUT':
+        obj=QuestionSSCCHSL.objects.get(pk=cid)
+        q_data=JSONParser().parse(request)
+        q_serializer=SSC_CHSL_QuestionSerializer(obj,data=q_data,partial=True)
+        if q_serializer.is_valid():
+            q_serializer.save()
+            return JsonResponse(q_serializer.data,status=status.HTTP_206_PARTIAL_CONTENT)
+        return JsonResponse(q_serializer.errors,status.HTTP_400_BAD_REQUEST)    
+    
+
 def previous_year_ssc_chsl_questions_by_test_name(request, cid):
     if request.method == 'GET':
         questionlist =PreviousYearQuestionSSCCHSL.objects.filter(
@@ -346,6 +374,15 @@ def ssc_je_ee_questions_by_test_name(request, cid):
             test_name=cid).order_by('question_number')
         serializer = SSC_JE_EE_QuestionSerializer(questionlist, many=True)
         return JsonResponse(serializer.data, safe=False)
+      
+    elif request.method == 'PUT':
+        obj=QuestionSSCJEEE.objects.get(pk=cid)
+        q_data=JSONParser().parse(request)
+        q_serializer=SSC_JE_EE_QuestionSerializer(obj,data=q_data,partial=True)
+        if q_serializer.is_valid():
+            q_serializer.save()
+            return JsonResponse(q_serializer.data,status=status.HTTP_206_PARTIAL_CONTENT)
+        return JsonResponse(q_serializer.errors,status.HTTP_400_BAD_REQUEST)
 
 def previous_year_ssc_je_ee_questions_by_test_name(request, cid):
     if request.method == 'GET':
@@ -458,6 +495,15 @@ def rrb_ntpc_questions_by_test_name(request, cid):
             q_serializer.save()
             return JsonResponse(q_serializer.data,status=status.HTTP_201_CREATED)
         return JsonResponse(q_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+      
+    elif request.method == 'PUT':
+        obj=QuestionRRBNtpc.objects.get(pk=cid)
+        q_data=JSONParser().parse(request)
+        q_serializer=RRB_NTPC_QuestionSerializer(obj,data=q_data,partial=True)
+        if q_serializer.is_valid():
+            q_serializer.save()
+            return JsonResponse(q_serializer.data,status=status.HTTP_206_PARTIAL_CONTENT)
+        return JsonResponse(q_serializer.errors,status.HTTP_400_BAD_REQUEST)
 
 def previous_year_rrb_ntpc_questions_by_test_name(request, cid):
 
@@ -517,6 +563,15 @@ def rrb_groupd_questions_by_test_name(request, cid):
             q_serializer.save()
             return JsonResponse(q_serializer.data,status=status.HTTP_201_CREATED)
         return JsonResponse(q_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+      
+    elif request.method == 'PUT':
+        obj=QuestionRRBGroupD.objects.get(pk=cid)
+        q_data=JSONParser().parse(request)
+        q_serializer=RRB_GROUPD_QuestionSerializer(obj,data=q_data,partial=True)
+        if q_serializer.is_valid():
+            q_serializer.save()
+            return JsonResponse(q_serializer.data,status=status.HTTP_206_PARTIAL_CONTENT)
+        return JsonResponse(q_serializer.errors,status.HTTP_400_BAD_REQUEST)
 
 def previous_year_rrb_groupd_questions_by_test_name(request, cid):
     if request.method == 'GET':

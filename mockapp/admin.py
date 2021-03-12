@@ -535,10 +535,19 @@ class Bihar_Police_QuestionAdmin(admin.ModelAdmin):
     )
     
     
-    list_display = ['question_number', 'question', 'test_name',
+    list_display = ['question_number','view_ids_link', 'question', 'test_name',
                     'category']
     search_fields = ['question', 'test_name', 'category']
     list_filter = ['year', 'subject', 'month', 'test_name', 'category']
+
+    def view_ids_link(self, obj):
+
+        url = (
+        urlencode({"ssccgltestname__id": f"{obj.id}"})
+        )
+        return obj.id
+
+    view_ids_link.short_description = "Id"
 
 
     
@@ -573,6 +582,12 @@ class SSC_CGL_QuestionAdmin(admin.ModelAdmin):
     search_fields = ['question', 'test_name', 'category']
     list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
+    def view_ids_link(self, obj):
+
+        url = (
+        urlencode({"ssccgltestname__id": f"{obj.id}"})
+        )
+        return obj.id
 
 @admin.register(QuestionSSCCHSL)
 class SSC_CHSL_QuestionAdmin(admin.ModelAdmin):
@@ -601,6 +616,12 @@ class SSC_CHSL_QuestionAdmin(admin.ModelAdmin):
     search_fields = ['question', 'test_name', 'category']
     list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
+    def view_ids_link(self, obj):
+
+        url = (
+        urlencode({"ssccgltestname__id": f"{obj.id}"})
+        )
+        return obj.id
 
 @admin.register(QuestionSSCJEEE)
 class SSC_JE_EE_QuestionAdmin(admin.ModelAdmin):
@@ -629,6 +650,12 @@ class SSC_JE_EE_QuestionAdmin(admin.ModelAdmin):
     search_fields = ['question', 'test_name', 'category']
     list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
+    def view_ids_link(self, obj):
+
+        url = (
+        urlencode({"ssccgltestname__id": f"{obj.id}"})
+        )
+        return obj.id
 
 @admin.register(QuestionSSCJECE)
 class SSC_JE_CE_QuestionAdmin(admin.ModelAdmin):
@@ -657,6 +684,12 @@ class SSC_JE_CE_QuestionAdmin(admin.ModelAdmin):
     search_fields = ['question', 'test_name', 'category']
     list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
+    def view_ids_link(self, obj):
+
+        url = (
+        urlencode({"ssccgltestname__id": f"{obj.id}"})
+        )
+        return obj.id
 # Previous Year SSC Questions models registered here
 
 
@@ -722,6 +755,12 @@ class RRB_NTPC_QuestionAdmin(admin.ModelAdmin):
     list_filter = ['year', 'subject', 'month', 'test_name', 'category']
     change_links = ['test_name']
 
+    def view_ids_link(self, obj):
+
+        url = (
+        urlencode({"ssccgltestname__id": f"{obj.id}"})
+        )
+        return obj.id
 
 @admin.register(QuestionRRBGroupD)
 class RRB_GROUPD_QuestionAdmin(admin.ModelAdmin):
@@ -750,6 +789,12 @@ class RRB_GROUPD_QuestionAdmin(admin.ModelAdmin):
     search_fields = ['question', 'test_name', 'category']
     list_filter = ['year', 'subject', 'month', 'test_name', 'category']
 
+    def view_ids_link(self, obj):
+
+        url = (
+        urlencode({"ssccgltestname__id": f"{obj.id}"})
+        )
+        return obj.id
 # Previous Year RRB Question models registered here
 
 
