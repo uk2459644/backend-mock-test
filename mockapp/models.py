@@ -374,6 +374,7 @@ class Institute(models.Model):
     pin=models.IntegerField()
     lat=models.FloatField()
     lon=models.FloatField()
+    keyword=models.CharField(max_length=50,null=True,blank=True)
     short_text=models.TextField(null=True)
     addresss=models.TextField()
     image=models.TextField()
