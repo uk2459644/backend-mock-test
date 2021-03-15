@@ -196,7 +196,122 @@ class JobInfoAdmin(admin.ModelAdmin):
 class JobInfoPointsAdmin(admin.ModelAdmin):
     list_display = ['title', 'point_no']
 
-   
+#Institute models here
+@admin.register(State)
+class StateAdmin(admin.ModelAdmin):
+    list_display=['name']
+
+@admin.register(City)
+class CityAdmin(admin.ModelAdmin):
+    list_display=['name']
+
+@admin.register(Institute)
+class InstitueAdmin(admin.ModelAdmin):
+    list_display=['name','added_by','city','state','view_ids_link'] 
+
+    def view_ids_link(self, obj):
+
+        url = (
+        urlencode({"biharpolicetestname__id": f"{obj.id}"})
+        )
+        return obj.id  
+
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(user=request.user)
+
+@admin.register(InstittuteOperator)
+class InstittuteOperatorAdmin(admin.ModelAdmin):
+    list_display=['name','city','state','view_ids_link']
+    list_filter=['city','state']
+
+    def view_ids_link(self, obj):
+
+        url = (
+        urlencode({"biharpolicetestname__id": f"{obj.id}"})
+        )
+        return obj.id  
+
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(user=request.user)
+
+@admin.register(InstituteTestName)
+class InstituteTestNameAdmin(admin.ModelAdmin):
+    list_display=['test_name','city','state','view_ids_link']
+    list_filter=['city','state','institute']
+
+    def view_ids_link(self, obj):
+
+        url = (
+        urlencode({"institutetestname__id": f"{obj.id}"})
+        )
+        return obj.id  
+
+
+    def view_question_link(self, obj):
+
+        url = (
+            reverse("admin:mockapp_questioninstitute_changelist")
+            + "?"
+            + urlencode({"test_name__id": f"{obj.id}"})
+        )
+        return format_html('<a href="{}"> Questions</a>', url)
+
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(user=request.user)
+
+@admin.register(QuestionInstitute)
+class QuestionInstituteAdmin(admin.ModelAdmin):
+    fieldsets = (
+        (None, {
+            "fields": (
+                'question_number','question','a','b','c','d','correct_opt','correct_text'
+            ),
+           
+        }),
+         ("Scroll options",{
+                'classes':('collapse',),
+                'fields':('test_name',('category','subject'),('month','year'))
+            }),
+        ("True/False options",{
+                'classes':('collapse',),
+                'fields':(('comprehension_show','comprehension_doc'),('show','question_doc'),'doc')
+            }),
+        ("Comprehension and marks",{
+            'classes':('collapse',),
+            'fields':('comprehension',('correct_mark','negative_mark'))
+        })
+    )
+    
+    
+    list_display = ['question_number','view_ids_link', 'question', 'test_name',
+                    'category']
+    search_fields = ['question', 'test_name', 'category']
+    list_filter = ['year', 'subject', 'month', 'test_name', 'category']
+
+    def view_ids_link(self, obj):
+
+        url = (
+        urlencode({"ssccgltestname__id": f"{obj.id}"})
+        )
+        return obj.id
+
+    view_ids_link.short_description = "Id"
+
+    def get_queryset(self, request):
+            qs = super().get_queryset(request)
+            if request.user.is_superuser:
+                return qs
+            return qs.filter(user=request.user)
+            
 # Bihar Police test name  models here
 
 

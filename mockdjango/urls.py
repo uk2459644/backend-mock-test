@@ -26,6 +26,7 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', show_question),
+    
 
     #api authorization url
 #     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),

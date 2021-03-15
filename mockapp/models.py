@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.conf import settings
 
 # Create your models here.
 
@@ -302,7 +303,154 @@ class JobInfoPoints(models.Model):
 
     def __str__(self):
         return self.title
+#city and state model are here
+class State(models.Model):
+    name=models.CharField( max_length=150)
 
+    class Meta:
+        ordering=[
+            'name'
+        ]
+
+    def __str__(self):
+        return self.name
+
+    
+class City(models.Model):
+    name=models.CharField( max_length=150,null=True)
+    state=models.ForeignKey(State, on_delete=models.SET_NULL,null=True)
+
+    class Meta:
+        ordering=[
+            'name','state'
+        ]
+
+    def __str__(self):
+        return self.name
+
+        
+# Institute operator model is here
+
+class InstittuteOperator(models.Model):
+    added_by=models.ForeignKey(settings.AUTH_USER_MODEL,null=True, on_delete=models.SET_NULL)
+    name=models.CharField( max_length=150,null=True,blank=True)
+    phone=models.CharField(max_length=12)
+    email=models.EmailField( max_length=254,unique=True)
+    date_edited=models.DateField(auto_now=False, auto_now_add=False)
+    city=models.ForeignKey(City,null=True, on_delete=models.SET_NULL)
+    state=models.ForeignKey(State, null=True, on_delete=models.SET_NULL)
+
+    class Meta:
+        ordering=[
+            'added_by','name','phone','email','date_edited','city','state'
+        ]
+    
+    def __str__(self):
+        return self.name
+
+    def save_model(self, request, obj, form, change):
+         obj.added_by = request.user
+         super().save_model(request, obj, form, change)
+
+    
+class Institute(models.Model):
+    added_by=models.ForeignKey(settings.AUTH_USER_MODEL,null=True, on_delete=models.SET_NULL)
+    for_inquiry_or_help_phone1=models.CharField( max_length=12)
+    for_inquiry_or_help_phone2=models.CharField(null=True, max_length=12)
+    for_inquiry_or_help_email=models.EmailField(max_length=254)
+    name=models.CharField( max_length=150)
+    operator=models.ForeignKey(InstittuteOperator, null=True, on_delete=models.SET_NULL)
+    phone1=models.CharField( max_length=12,unique=True)
+    phone2=models.CharField( max_length=12,unique=True)
+    email=models.EmailField( max_length=254,unique=True)
+    city=models.ForeignKey(City,null=True, on_delete=models.SET_NULL)
+    state=models.ForeignKey(State, on_delete=models.SET_NULL,null=True)
+    pin=models.IntegerField()
+    lat=models.FloatField()
+    lon=models.FloatField()
+    short_text=models.TextField(null=True)
+    addresss=models.TextField()
+    image=models.TextField()
+
+    class Meta:
+        ordering=[
+            'added_by','name','operator','city','state','pin'
+        ]
+
+    def __str__(self):
+        return self.name
+
+class InstituteTestName(models.Model):
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
+    institute=models.ForeignKey(Institute,null=True, on_delete=models.SET_NULL)
+    city=models.ForeignKey(City,null=True, on_delete=models.SET_NULL)
+    state=models.ForeignKey(State, on_delete=models.SET_NULL,null=True)
+    language = models.ForeignKey(
+        LanguageSelector, on_delete=models.CASCADE, null=True, blank=True, default='')
+    test_number = models.IntegerField(null=True, blank=True)
+    test_name = models.CharField(max_length=120)
+    keyword = models.CharField(max_length=120, null=True, blank=True)
+    is_previous_year_question = models.BooleanField(default=False)
+    total_no_of_question = models.IntegerField(null=True, blank=True)
+    month = models.ForeignKey(Month, on_delete=models.CASCADE)
+    year = models.ForeignKey(Year, on_delete=models.CASCADE)
+    pub_date = models.DateField()
+    edit_date = models.DateField()
+    category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
+    show_test = models.BooleanField(default=True)
+    test_time = models.IntegerField(
+        default=60, help_text='test time in minutes')
+
+    class Meta:
+        ordering = ['test_number', 'year', 'month', 'show_test','user',
+                    'is_previous_year_question',
+                    'total_no_of_question',
+                    'language',
+                    'test_name', 'test_time',
+                    'pub_date', 'edit_date', 'category']
+
+    def __str__(self):
+        return self.test_name
+
+
+class QuestionInstitute(models.Model):
+    # pub_date = models.DateField()
+    # edit_date = models.DateField()
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
+    test_name = models.ForeignKey(
+        InstituteTestName, on_delete=models.CASCADE, related_name='questionbiharpolice')
+    category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    month = models.ForeignKey(Month, on_delete=models.CASCADE)
+    year = models.ForeignKey(Year, on_delete=models.CASCADE)
+    comprehension_show = models.BooleanField(default=False)
+    comprehension_doc = models.BooleanField(default=False)
+    comprehension = models.TextField(blank=True, null=True)
+    show = models.BooleanField(default=True)
+    question_doc = models.BooleanField(default=False)
+    question_number = models.IntegerField(null=True, blank=True)
+    question = models.TextField(help_text='Write question')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
+    correct_opt = models.CharField(max_length=1)
+    correct_text = models.TextField(
+        default='', help_text='Correct option value')
+    correct_mark = models.FloatField(default=1)
+    negative_mark = models.FloatField(default=0)
+
+    class Meta:
+        ordering = ['test_name', 'category',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
+                    'correct_mark', 'correct_text', 'correct_text',
+                    'negative_mark']
+
+    def __str__(self):
+        return self.question
+ 
 # BIHAR POLICE Test name models here
 
 

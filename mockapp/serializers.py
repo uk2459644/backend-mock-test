@@ -112,6 +112,22 @@ class JobInfoPointSerializer(serializers.ModelSerializer):
         fields = ['id', 'point_no', 'job_info', 'title',
                   'description', 'show', 'image_show', 'image_url']
 
+#Institue Serializer here
+class InstituteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Institute
+        fields='__all__'
+
+class InstituteTestNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=InstituteTestName
+        fields='__all__'
+
+class QuestionInstituteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=QuestionInstitute
+        fields='__all__'        
+
 # Bihar police test name serializer
 
 
