@@ -220,7 +220,7 @@ class InstitueAdmin(admin.ModelAdmin):
             qs = super().get_queryset(request)
             if request.user.is_superuser:
                 return qs
-            return qs.filter(user=request.user)
+            return qs.filter(added_by=request.user)
 
 @admin.register(InstittuteOperator)
 class InstittuteOperatorAdmin(admin.ModelAdmin):
@@ -238,7 +238,7 @@ class InstittuteOperatorAdmin(admin.ModelAdmin):
             qs = super().get_queryset(request)
             if request.user.is_superuser:
                 return qs
-            return qs.filter(user=request.user)
+            return qs.filter(added_by=request.user)
 
 @admin.register(InstituteTestName)
 class InstituteTestNameAdmin(admin.ModelAdmin):
