@@ -113,6 +113,11 @@ class JobInfoPointSerializer(serializers.ModelSerializer):
                   'description', 'show', 'image_show', 'image_url']
 
 #Institue Serializer here
+class CitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model=City
+        fields='__all__'
+
 class InstituteSerializer(serializers.ModelSerializer):
     class Meta:
         model=Institute

@@ -26,7 +26,13 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', show_question),
-    
+
+   #institute related query urls
+
+    path('city-list/',city_list), 
+    path('institute-list/',all_institute_list),
+    path('institute-list/<int:cid>/',institute_list),
+    path('testname-by-institute/<int:cid>/',test_list_by_institute),
 
     #api authorization url
 #     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),

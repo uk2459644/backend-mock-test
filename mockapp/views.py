@@ -194,6 +194,32 @@ def job_point_list(request,cid):
         pointinfo_list=JobInfoPoints.objects.filter(job_info=cid).order_by('point_no')
         serializer=JobInfoPointSerializer(pointinfo_list,many=True)
         return JsonResponse(serializer.data,safe=False)
+
+# getting institute related models query response
+def city_list(request):
+   if request.method == 'GET':
+        jobinfo_list=City.objects.filter(show=True)
+        serializer=CitySerializer(jobinfo_list,many=True)
+        return JsonResponse(serializer.data,safe=False)
+def all_institute_list(request):
+    if request.method == 'GET':
+        jobinfo_list=Institute.objects.all()
+        serializer=InstituteSerializer(jobinfo_list,many=True)
+        return JsonResponse(serializer.data,safe=False)
+
+def institute_list(request,cid):
+    if request.method == 'GET':
+        jobinfo_list=Institute.objects.filter(city=cid)
+        serializer=InstituteSerializer(jobinfo_list,many=True)
+        return JsonResponse(serializer.data,safe=False)
+
+def test_list_by_institute(request,cid):
+    if request.method == 'GET':
+        jobinfo_list=InstituteTestName.objects.filter(institute=cid)
+        serializer=InstituteTestNameSerializer(jobinfo_list,many=True)
+        return JsonResponse(serializer.data,safe=False)
+
+
 # getting ssc cgl test name and questions list ordered by test number
 
 
