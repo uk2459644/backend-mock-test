@@ -306,6 +306,7 @@ class JobInfoPoints(models.Model):
 #city and state model are here
 class State(models.Model):
     name=models.CharField( max_length=150)
+    image=models.TextField(null=True,blank=True)
     show=models.BooleanField(default=True)
 
     class Meta:
@@ -320,6 +321,7 @@ class State(models.Model):
 class City(models.Model):
     name=models.CharField( max_length=150,null=True)
     show=models.BooleanField(default=True)
+    image=models.TextField(null=True,blank=True)
     state=models.ForeignKey(State, on_delete=models.SET_NULL,null=True)
 
     class Meta:

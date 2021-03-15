@@ -201,6 +201,7 @@ def city_list(request):
         jobinfo_list=City.objects.filter(show=True)
         serializer=CitySerializer(jobinfo_list,many=True)
         return JsonResponse(serializer.data,safe=False)
+        
 def all_institute_list(request):
     if request.method == 'GET':
         jobinfo_list=Institute.objects.all()
