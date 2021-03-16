@@ -153,6 +153,7 @@ class TestCategory(models.Model):
 class Subject(models.Model):
     subject = models.CharField(max_length=150)
     image=models.TextField(null=True,blank=True)
+    keyword=models.CharField(null=True,blank=True, max_length=50)
     show=models.BooleanField(default=True)
     pub_date = models.DateField(auto_now=True)
     edit_date = models.DateField(auto_now=True)
