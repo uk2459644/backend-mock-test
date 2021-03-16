@@ -63,7 +63,7 @@ class TestCategorySerializer(serializers.ModelSerializer):
 class SubjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Subject
-        fields = ['id', 'subject', 'pub_date', 'edit_date']
+        fields = '__all__'
 
 
 class TestNameSerializer(serializers.ModelSerializer):
@@ -111,6 +111,16 @@ class JobInfoPointSerializer(serializers.ModelSerializer):
         model = JobInfoPoints
         fields = ['id', 'point_no', 'job_info', 'title',
                   'description', 'show', 'image_show', 'image_url']
+#subject test name and questions serializers
+class SubjectByTestNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=SubjectByTestName
+        fields='__all__'
+
+class QuestionBySubjectTestNameSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=QuestionBySubjectTestName
+        fields='__all__'
 
 #Institue Serializer here
 class CitySerializer(serializers.ModelSerializer):

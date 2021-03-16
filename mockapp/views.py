@@ -194,6 +194,43 @@ def job_point_list(request,cid):
         pointinfo_list=JobInfoPoints.objects.filter(job_info=cid).order_by('point_no')
         serializer=JobInfoPointSerializer(pointinfo_list,many=True)
         return JsonResponse(serializer.data,safe=False)
+#getting subject , test name by subject and questions related models here
+def subject_list(request):
+    if request.method == 'GET':
+        jobinfo_list=Subject.objects.filter(show=True)
+        serializer=SubjectSerializer(jobinfo_list,many=True)
+        return JsonResponse(serializer.data,safe=False)
+
+def test_list_by_subject(request,cid):
+   if request.method == 'GET':
+        jobinfo_list=SubjectByTestName.objects.filter(subject=cid)
+        serializer=SubjectByTestNameSerializer(jobinfo_list,many=True)
+        return JsonResponse(serializer.data,safe=False)
+        
+@csrf_exempt 
+def questions_by_subject_test_name(request, cid):
+    if request.method == 'GET':
+        questionlist = QuestionBySubjectTestName.objects.filter(
+            test_name=cid).order_by('question_number')
+        serializer = QuestionBySubjectTestNameSerializer(questionlist, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        q_data=JSONParser().parse(request)
+        q_serializer=QuestionBySubjectTestNameSerializer(data=q_data)
+        if q_serializer.is_valid():
+            q_serializer.save()
+            return JsonResponse(q_serializer.data,status=status.HTTP_201_CREATED)
+        return JsonResponse(q_serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+       
+    elif request.method == 'PUT':
+        obj=QuestionBySubjectTestName.objects.get(pk=cid)
+        q_data=JSONParser().parse(request)
+        q_serializer=QuestionBySubjectTestNameSerializer(obj,data=q_data,partial=True)
+        if q_serializer.is_valid():
+            q_serializer.save()
+            return JsonResponse(q_serializer.data,status=status.HTTP_206_PARTIAL_CONTENT)
+        return JsonResponse(q_serializer.errors,status.HTTP_400_BAD_REQUEST)
 
 # getting institute related models query response
 def city_list(request):

@@ -27,6 +27,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', show_question),
 
+    #subject by tests and questions url
+    path('subject-list/',subject_list), 
+    path('test-by-subject-list/<int:cid>/',test_list_by_subject),
+    path('questions-bysubject-test-list/<int:cid>/',questions_by_subject_test_name),
+
+
    #institute related query urls
 
     path('city-list/',city_list), 

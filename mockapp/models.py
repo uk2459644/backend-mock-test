@@ -152,6 +152,8 @@ class TestCategory(models.Model):
 
 class Subject(models.Model):
     subject = models.CharField(max_length=150)
+    image=models.TextField(null=True,blank=True)
+    show=models.BooleanField(default=True)
     pub_date = models.DateField(auto_now=True)
     edit_date = models.DateField(auto_now=True)
 
@@ -333,8 +335,78 @@ class City(models.Model):
 
     def __str__(self):
         return self.name
+#tests and questions by subjects
 
-        
+class SubjectByTestName(models.Model):
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
+    city=models.ForeignKey(City,null=True, on_delete=models.SET_NULL)
+    state=models.ForeignKey(State, on_delete=models.SET_NULL,null=True)
+    language = models.ForeignKey(
+        LanguageSelector, on_delete=models.CASCADE, null=True, blank=True, default='')
+    test_number = models.IntegerField(null=True, blank=True)
+    test_name = models.CharField(max_length=120)
+    keyword = models.CharField(max_length=120, null=True, blank=True)
+    is_previous_year_question = models.BooleanField(default=False)
+    total_no_of_question = models.IntegerField(null=True, blank=True)
+    month = models.ForeignKey(Month, on_delete=models.CASCADE)
+    year = models.ForeignKey(Year, on_delete=models.CASCADE)
+    pub_date = models.DateField()
+    edit_date = models.DateField()
+    subject = models.ForeignKey(Subject, on_delete=models.SET_NULL,null=True,blank=True)
+    show_test = models.BooleanField(default=True)
+    test_time = models.IntegerField(
+        default=60, help_text='test time in minutes')
+
+    class Meta:
+        ordering = ['test_number', 'year', 'month', 'show_test','user',
+                    'is_previous_year_question',
+                    'total_no_of_question',
+                    'language',
+                    'test_name', 'test_time',
+                    'pub_date', 'edit_date', 'subject']
+
+    def __str__(self):
+        return self.test_name
+
+
+class QuestionBySubjectTestName(models.Model):
+    # pub_date = models.DateField()
+    # edit_date = models.DateField()
+    user=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,blank=True)
+    test_name = models.ForeignKey(
+        SubjectByTestName, on_delete=models.CASCADE, )
+    category = models.ForeignKey(TestCategory, on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    month = models.ForeignKey(Month, on_delete=models.CASCADE)
+    year = models.ForeignKey(Year, on_delete=models.CASCADE)
+    comprehension_show = models.BooleanField(default=False)
+    comprehension_doc = models.BooleanField(default=False)
+    comprehension = models.TextField(blank=True, null=True)
+    show = models.BooleanField(default=True)
+    question_doc = models.BooleanField(default=False)
+    question_number = models.IntegerField(null=True, blank=True)
+    question = models.TextField(help_text='Write question')
+    doc = models.BooleanField(default=False)
+    a = models.TextField(help_text='Option a')
+    b = models.TextField(help_text='Option b')
+    c = models.TextField(help_text='Option c')
+    d = models.TextField(help_text='Option d')
+    correct_opt = models.CharField(max_length=1)
+    correct_text = models.TextField(
+        default='', help_text='Correct option value')
+    correct_mark = models.FloatField(default=1)
+    negative_mark = models.FloatField(default=0)
+
+    class Meta:
+        ordering = ['test_name', 'category',
+                    'subject', 'month', 'year', 'show', 'question', 'a', 'b',
+                    'c', 'd', 'correct_opt', 'question_number',
+                    'correct_mark', 'correct_text', 'correct_text',
+                    'negative_mark']
+
+    def __str__(self):
+        return self.question
+     
 # Institute operator model is here
 
 class InstittuteOperator(models.Model):
