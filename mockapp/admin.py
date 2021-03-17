@@ -198,7 +198,7 @@ class JobInfoPointsAdmin(admin.ModelAdmin):
 #subject by test name and questions models are here
 @admin.register(SubjectByTestName)
 class SubjectByTestNameAdmin(admin.ModelAdmin):
-    list_display=['test_name','city','state','view_ids_link']
+    list_display=['test_name','city','state','view_ids_link','view_question_link']
     list_filter=['city','state','subject']
 
     def view_ids_link(self, obj):
@@ -263,11 +263,11 @@ class QuestionBySubjectTestNameAdmin(admin.ModelAdmin):
 
     view_ids_link.short_description = "Id"
 
-    def get_queryset(self, request):
-            qs = super().get_queryset(request)
-            if request.user.is_superuser:
-                return qs
-            return qs.filter(user=request.user)
+    # def get_queryset(self, request):
+    #         qs = super().get_queryset(request)
+    #         if request.user.is_superuser:
+    #             return qs
+    #         return qs.filter(user=request.user)
             
 
 #Institute models here
@@ -308,11 +308,11 @@ class InstittuteOperatorAdmin(admin.ModelAdmin):
         )
         return obj.id  
 
-    def get_queryset(self, request):
-            qs = super().get_queryset(request)
-            if request.user.is_superuser:
-                return qs
-            return qs.filter(added_by=request.user)
+    # def get_queryset(self, request):
+    #         qs = super().get_queryset(request)
+    #         if request.user.is_superuser:
+    #             return qs
+    #         return qs.filter(added_by=request.user)
 
 @admin.register(InstituteTestName)
 class InstituteTestNameAdmin(admin.ModelAdmin):
