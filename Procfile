@@ -1,1 +1,0 @@
-web: gunicorn mockdjango.wsgi:application --log-file -
